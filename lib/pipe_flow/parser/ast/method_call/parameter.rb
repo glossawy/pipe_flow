@@ -5,7 +5,7 @@ module PipeFlow
         class Parameter
           attr_reader :type, :name
 
-          def initialize(type, name)
+          def initialize(type, name = nil)
             @type = type
             @name = name
           end

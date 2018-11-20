@@ -14,6 +14,10 @@ module PipeFlow
           "Literal(#{value.inspect})"
         end
 
+        def input_needed?
+          false
+        end
+
         def ==(other)
           self.class == other.class &&
             value == other.value

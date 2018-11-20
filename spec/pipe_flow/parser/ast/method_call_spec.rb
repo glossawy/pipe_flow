@@ -77,6 +77,12 @@ RSpec.describe PipeFlow::Parser::AST::MethodCall do
       params: [keyrest_param(:kwargs)],
       expected_arity: (0..1),
       expected_definition: 'test_method(**kwargs)'
+
+    include_examples 'AST::MethodCall method definition',
+      description: 'like a native C method (e.g. `puts(*)`)',
+      params: [[:rest]],
+      expected_arity: (0..Float::INFINITY),
+      expected_definition: 'test_method(*args)'
   end
 
   describe '#==' do
@@ -125,6 +131,24 @@ RSpec.describe PipeFlow::Parser::AST::MethodCall do
 
       it 'considers the other methods call non-equivalent' do
         is_expected.not_to eq(other_method_call)
+      end
+    end
+  end
+
+  describe '#input_needed?' do
+    subject { super().input_needed? }
+    context 'with a reifiable method (one with a missing argument)' do
+      let(:parameters) { [req_param(:a), req_param(:b)] }
+      let(:parameter_values) { super().drop(1) }
+
+      it 'requires input' do
+        is_expected.to be true
+      end
+    end
+
+    context 'with a non-reifiable method (one without a missing argument)' do
+      it 'does not require input' do
+        is_expected.to be false
       end
     end
   end
