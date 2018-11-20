@@ -1,14 +1,25 @@
-node_base_class = PipeFlow::Parser::AST::Base
+module ASTHelpers
+  module_function
 
-RSpec::Matchers.define :be_an_ast_node do
-  match do |actual|
-    actual.kind_of?(node_base_class)
+  def base_class
+    PipeFlow::Parser::AST::Base
+  end
+
+  def all_node_classes
+    PipeFlow::Parser::AST
+      .constants
+      .map { |c| PipeFlow::Parser::AST.const_get(c) }
+      .select { |c| c < base_class }
   end
 end
 
-node_types = ObjectSpace.each_object(Class).select { |c| c < node_base_class }
+RSpec::Matchers.define :be_an_ast_node do
+  match do |actual|
+    actual.kind_of?(ASTHelpers.base_class)
+  end
+end
 
-node_types.each do |node_type|
+ASTHelpers.all_node_classes.each do |node_type|
   simple_name = node_type.name.split('::').last.downcase
 
   RSpec::Matchers.define "be_an_ast_#{simple_name}" do
