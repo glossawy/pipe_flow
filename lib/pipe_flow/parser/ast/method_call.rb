@@ -4,11 +4,12 @@ module PipeFlow
       class MethodCall < AST::Base
         destination_only_node!
 
-        attr_reader :env, :method_id, :arguments, :parameters
-        def initialize(env, method_id, arguments)
+        attr_reader :env, :method_id, :arguments, :parameters, :block
+        def initialize(env, method_id, arguments, &block)
           @env = env
           @method_id = method_id
           @arguments = arguments
+          @block = block
           @parameters = env.eval("method('#{method_id}').parameters")
                            .map { |metadata| Parameter.new(*metadata) }
         end
@@ -19,6 +20,10 @@ module PipeFlow
           # such that only 1 required argument could remain (the leftmost one) to be filled.
 
           !contains_method_call? && required_arity?
+        end
+
+        def accepts_block?
+          parameters.any?(&:block?)
         end
 
         # :reek:TooManyStatements
