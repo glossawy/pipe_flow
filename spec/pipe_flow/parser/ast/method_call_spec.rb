@@ -128,4 +128,22 @@ RSpec.describe PipeFlow::Parser::AST::MethodCall do
       end
     end
   end
+
+  describe '#input_needed?' do
+    subject { super().input_needed? }
+    context 'with a reifiable method (one with a missing argument)' do
+      let(:parameters) { [req_param(:a), req_param(:b)] }
+      let(:parameter_values) { super().drop(1) }
+
+      it 'requires input' do
+        is_expected.to be true
+      end
+    end
+
+    context 'with a non-reifiable method (one without a missing argument)' do
+      it 'does not require input' do
+        is_expected.to be false
+      end
+    end
+  end
 end
