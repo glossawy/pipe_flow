@@ -2,7 +2,10 @@ module PipeFlow
   module Parser
     module Visitors
       class Collector < Visitors::Visitor
-        alias collect visit
+        def collect(*args)
+          visit(*args)
+          collected
+        end
 
         def collected
           @collected ||= []
@@ -15,7 +18,8 @@ module PipeFlow
 
         def visit_PipeFlow_Parser_AST_Literal(literal)
           value = literal.value
-          value = ->(_input) { value } unless value.is_a?(Proc)
+          value = ->(_input) { literal.value } unless value.is_a?(Proc)
+
           collected << value
         end
 
