@@ -82,7 +82,7 @@ RSpec.describe PipeFlow::Parser::AST::MethodCall do
       description: 'like a native C method (e.g. `puts(*)`)',
       params: [[:rest]],
       expected_arity: (0..Float::INFINITY),
-      expected_definition: 'test_method(*args)'
+      expected_definition: 'test_method(*)'
 
     include_examples 'AST::MethodCall method definition',
       description: 'just takes a block',
