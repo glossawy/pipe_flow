@@ -1,5 +1,7 @@
 require 'pipe_flow/version'
 
+require 'pipe_flow/core_refinements/pipe_flow_nodes'
+
 require 'pipe_flow/parser/ast/base'
 require 'pipe_flow/parser/ast/hole'
 require 'pipe_flow/parser/ast/literal'
