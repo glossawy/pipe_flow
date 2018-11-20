@@ -9,5 +9,8 @@ require 'pipe_flow/parser/ast/literal'
 require 'pipe_flow/parser/ast/method_call'
 require 'pipe_flow/parser/ast/method_call/parameter'
 require 'pipe_flow/parser/ast/pipe'
+
+require 'pipe_flow/parser/visitors/visitor'
+
 require 'pipe_flow/parser/context'
 require 'pipe_flow/parser'
