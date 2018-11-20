@@ -77,6 +77,12 @@ RSpec.describe PipeFlow::Parser::AST::MethodCall do
       params: [keyrest_param(:kwargs)],
       expected_arity: (0..1),
       expected_definition: 'test_method(**kwargs)'
+
+    include_examples 'AST::MethodCall method definition',
+      description: 'like a native C method (e.g. `puts(*)`)',
+      params: [[:rest]],
+      expected_arity: (0..Float::INFINITY),
+      expected_definition: 'test_method(*args)'
   end
 
   describe '#==' do
