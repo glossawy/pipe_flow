@@ -10,7 +10,7 @@ RSpec.shared_examples 'a PipeFlow AST Node' do
   end
 
   context 'interface' do
-    %i[== to_s].each do |method_id|
+    %i[== to_s input_needed?].each do |method_id|
       it "implements #{method_id}" do
         expect(described_class.instance_methods(false)).to include(method_id)
       end

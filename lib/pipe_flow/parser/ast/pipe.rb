@@ -8,6 +8,10 @@ module PipeFlow
           @destination = destination
         end
 
+        def input_needed?
+          source.input_needed?
+        end
+
         def to_h
           super.merge(
             source: source.to_h,

@@ -10,6 +10,10 @@ module PipeFlow
           'hole(·)'
         end
 
+        def input_needed?
+          true
+        end
+
         alias == equal?
       end
     end
