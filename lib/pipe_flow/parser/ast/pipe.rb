@@ -9,14 +9,14 @@ module PipeFlow
         end
 
         def to_h
-          super.merge({
+          super.merge(
             source: source.to_h,
-            destination: destination.to_h,
-          })
+            destination: destination.to_h
+          )
         end
 
         def to_s
-          "#{source.to_s} >> #{destination.to_s}"
+          "#{source} >> #{destination}"
         end
 
         def ==(other)

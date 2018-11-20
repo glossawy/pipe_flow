@@ -4,6 +4,7 @@ module PipeFlow
       class Validator < Visitors::Visitor
         alias validate visit
 
+        # rubocop:disable Naming/MethodName
         def visit_PipeFlow_Parser_AST_Pipe(pipe)
           src = pipe.source
           dst = pipe.destination
@@ -18,6 +19,7 @@ module PipeFlow
         alias visit_PipeFlow_Parser_AST_Hole do_nothing
         alias visit_PipeFlow_Parser_AST_Literal do_nothing
         alias visit_PipeFlow_Parser_AST_MethodCall do_nothing
+        # rubocop:enable Naming/MethodName
       end
     end
   end
