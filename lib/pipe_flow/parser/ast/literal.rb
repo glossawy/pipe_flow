@@ -16,7 +16,7 @@ module PipeFlow
 
         def ==(other)
           self.class == other.class &&
-            self.value == other.value
+            value == other.value
         end
       end
     end

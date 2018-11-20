@@ -9,9 +9,11 @@ module PipeFlow
       def self.msg_for(node)
         case node
         when Parser::AST::MethodCall
-          "An incomplete method call is a valid right-hand side of a pipeline but not a valid left-hand side (#{node.to_s} >> ... is invalid)"
+          'An incomplete method call is a valid right-hand side of a pipeline but not ' \
+          "a valid left-hand side (#{node} >> ... is invalid)"
         else
-          "#{node.class.name} is unexpected on the left-hand side of a pipeline (#{node.to_s} >> ... is unexpected)"
+          "#{node.class.name} is unexpected on the left-hand side of a pipeline " \
+          "(#{node} >> ... is unexpected)"
         end
       end
     end
@@ -24,9 +26,11 @@ module PipeFlow
       def self.msg_for(node)
         case node
         when Parser::AST::Literal
-          "#{node.value} cannot be the right-hand side of a pipeline (... >> #{node.to_s} is invalid)"
+          "#{node.value} cannot be the right-hand side of a pipeline " \
+          "(... >> #{node} is invalid)"
         else
-          "#{node.class.name} is unexpected on the right-hand side of a pipeline (... >> #{node.to_s} is unexpected)"
+          "#{node.class.name} is unexpected on the right-hand side of a pipeline " \
+          "(... >> #{node} is unexpected)"
         end
       end
     end

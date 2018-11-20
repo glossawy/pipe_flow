@@ -2,7 +2,6 @@ module PipeFlow
   module Parser
     module AST
       class MethodCall < AST::Base
-
         destination_only_node!
 
         attr_reader :env, :method_id, :arguments, :parameters
@@ -10,18 +9,20 @@ module PipeFlow
           @env = env
           @method_id = method_id
           @arguments = arguments
-          @parameters = env.eval("method('#{method_id}').parameters").map { |metadata| Parameter.new(*metadata) }
+          @parameters = env.eval("method('#{method_id}').parameters")
+                           .map { |metadata| Parameter.new(*metadata) }
         end
 
         def reifiable?
           # For a method call to be reifiable into a PipeFlow representation, it must
-          # be resolvable in the bound environment and we must be given enough arguments such that only
-          # 1 required argument could remain (the leftmost one) to be filled.
+          # be resolvable in the bound environment and we must be given enough arguments
+          # such that only 1 required argument could remain (the leftmost one) to be filled.
 
-          !contains_method_call? && has_required_arity?
+          !contains_method_call? && required_arity?
         end
 
         # :reek:TooManyStatements
+        # rubocop:disable Metrics/AbcSize
         def arity
           @arity ||= begin
             # Because of ruby's support for optional positional and keyword parameters, the real
@@ -29,7 +30,7 @@ module PipeFlow
             # parameters the upper limit can be, conceptually, infinite.
             #
             # 1. For the lower bound:
-            #   a. (# of required positional parameters) + (1 if any keyword parameters are required)
+            #   a. (# of required positional parameters) + (1 if keyword parameters are required)
             #
             # 2. For the upper bound:
             #   a. (# of positional parameters) + (1 if any keyword parameters exist)
@@ -52,28 +53,31 @@ module PipeFlow
             (lower_bound..upper_bound)
           end
         end
+        # rubocop:enable Metrics/AbcSize
 
         def definition
           "#{method_id}(#{parameters.map(&:to_s).join(', ')})"
         end
 
         def to_h
-          super.merge({
+          super.merge(
             derived_definition: definition,
             method_id: method_id,
             parameters: parameters.map(&:to_h),
             derived_arity: arity,
             arg_count: arguments.size,
-            reifiable: reifiable?,
-          })
+            reifiable: reifiable?
+          )
         end
 
         def to_s
           return definition unless reifiable?
+
           params = parameters.drop(1) | ['.']
           "#{method_id}(#{params.join(', ')})"
         end
 
+        # rubocop:disable Metrics/AbcSize
         def ==(other)
           self.class == other.class &&
             method_id == other.method_id &&
@@ -81,6 +85,7 @@ module PipeFlow
             parameters == other.parameters &&
             arguments == other.arguments
         end
+        # rubocop:enable Metrics/AbcSize
 
         private
 
@@ -92,8 +97,8 @@ module PipeFlow
           arguments.any? { |arg| arg.is_a?(MethodCall) }
         end
 
-        def has_required_arity?
-          return false if arity.size == 0     # Nil arity
+        def required_arity?
+          return false if arity.size.zero? # Nil arity
 
           # The focus here is to ensure that we have exactly the right
           # number of arguments to leave the left-most argument open for the

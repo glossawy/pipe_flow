@@ -1,3 +1,8 @@
+AllCops:
+  Exclude:
+    - spec/**/*.rb
+    - bin/**/*
+
 Metrics/LineLength:
   Max: 100
 

@@ -1,3 +1,4 @@
+# rubocop:disable Style/DoubleNegation
 module PipeFlow
   module CoreRefinements
     module ClassAttributes
@@ -10,7 +11,7 @@ module PipeFlow
             define_shared_singleton_method("#{name}?") { !!public_send(name) }
 
             define_singleton_method("#{name}=") do |new_value|
-              redefine_singleton_method(name) { new_value}
+              redefine_singleton_method(name) { new_value }
             end
           end
         end
@@ -20,7 +21,10 @@ module PipeFlow
         end
 
         def redefine_method(method_id, &body)
-          undef_method(method_id) if method_defined?(method_id) || private_method_defined?(method_id)
+          if method_defined?(method_id) || private_method_defined?(method_id)
+            undef_method(method_id)
+          end
+
           define_method(method_id, &body)
         end
 
@@ -32,3 +36,4 @@ module PipeFlow
     end
   end
 end
+# rubocop:enable Style/DoubleNegation

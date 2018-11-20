@@ -25,17 +25,19 @@ module PipeFlow
           end
 
           # :reek:TooManyStatements
+          # rubocop:disable Metrics/CyclomaticComplexity
           def to_s
             case type
-              when :req     then name.to_s
-              when :opt     then "#{name} = <value>"
-              when :rest    then "*#{name || 'args'}"
-              when :key     then "#{name}: <value>"
-              when :keyreq  then "#{name}:"
-              when :keyrest then "**#{name || 'kwargs'}"
+            when :req     then name.to_s
+            when :opt     then "#{name} = <value>"
+            when :rest    then "*#{name || 'args'}"
+            when :key     then "#{name}: <value>"
+            when :keyreq  then "#{name}:"
+            when :keyrest then "**#{name || 'kwargs'}"
             else "<unknwon representation: #{type}>"
             end
           end
+          # rubocop:enable Metrics/CyclomaticComplexity
         end
       end
     end
