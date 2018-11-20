@@ -10,7 +10,7 @@ module PipeFlow
             @name = name
           end
 
-          %i[req keyreq opt key rest keyrest].each do |param_type|
+          %i[req keyreq opt key rest keyrest block].each do |param_type|
             define_method("#{param_type}?") do
               param_type == type
             end
@@ -34,7 +34,8 @@ module PipeFlow
             when :key     then "#{name}: <value>"
             when :keyreq  then "#{name}:"
             when :keyrest then "**#{name || 'kwargs'}"
-            else "<unknwon representation: #{type}>"
+            when :block   then "&#{name || 'block'}"
+            else "<unknown representation: #{type}>"
             end
           end
           # rubocop:enable Metrics/CyclomaticComplexity
