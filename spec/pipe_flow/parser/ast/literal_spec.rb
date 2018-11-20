@@ -23,4 +23,8 @@ RSpec.describe PipeFlow::Parser::AST::Literal do
       end
     end
   end
+
+  it 'does not require input' do
+    expect(subject.input_needed?).to be false
+  end
 end

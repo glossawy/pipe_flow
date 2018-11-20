@@ -62,6 +62,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Collector do
       end
 
       it 'visits the source and destination nodes as a pre-order traversal', aggregate_failures: true do
+        allow(instance).to receive(:visit).with(input).and_call_original.ordered
         expect(instance).to receive(:visit).with(source).and_call_original.ordered
         expect(instance).to receive(:visit).with(destination).and_call_original.ordered
         subject

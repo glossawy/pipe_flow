@@ -59,6 +59,10 @@ module PipeFlow
           "#{method_id}(#{parameters.map(&:to_s).join(', ')})"
         end
 
+        def input_needed?
+          reifiable?
+        end
+
         def to_h
           super.merge(
             derived_definition: definition,

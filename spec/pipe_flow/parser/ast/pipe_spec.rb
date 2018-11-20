@@ -2,8 +2,8 @@ RSpec.describe PipeFlow::Parser::AST::Pipe do
   it_behaves_like 'a PipeFlow AST Node'
 
   let(:instance) { described_class.new(source, destination) }
-  let(:source) { double('Source', to_h: {}, to_s: 'src') }
-  let(:destination) { double('Destination', to_h: {}, to_s: 'dest') }
+  let(:source) { double('Source', to_h: {}, to_s: 'src', input_needed?: true) }
+  let(:destination) { double('Destination', to_h: {}, to_s: 'dest', input_needed?: true) }
 
   subject { instance }
 
@@ -55,6 +55,28 @@ RSpec.describe PipeFlow::Parser::AST::Pipe do
           expect(send(let_name)).to receive(:==).with(send("other_#{let_name}")).and_return(false)
           expect(subject).not_to eq(other_pipe)
         end
+      end
+    end
+  end
+
+  describe '#input_needed?' do
+    subject { super().input_needed? }
+
+    it 'does not query the destination' do
+      expect(destination).not_to receive(:input_needed?)
+      subject
+    end
+
+    context 'when source needs input' do
+      it 'needs input as well' do
+        is_expected.to be true
+      end
+    end
+
+    context 'when source does not need input' do
+      before { allow(source).to receive(:input_needed?).and_return(false) }
+      it 'does not need input' do
+        is_expected.to be false
       end
     end
   end
