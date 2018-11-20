@@ -18,9 +18,7 @@ module PipeFlow
 
         def visit_PipeFlow_Parser_AST_Literal(literal)
           value = literal.value
-          value = ->(_input) { literal.value } unless value.is_a?(Proc)
-
-          collected << value
+          collected << ->(_input) { value }
         end
 
         def visit_PipeFlow_Parser_AST_MethodCall(method_call)
