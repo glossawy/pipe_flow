@@ -13,5 +13,6 @@ require 'pipe_flow/parser/ast/pipe'
 
 require 'pipe_flow/parser/visitors/visitor'
 require 'pipe_flow/parser/visitors/validation'
+require 'pipe_flow/parser/visitors/collector'
 
 require 'pipe_flow/parser/context'

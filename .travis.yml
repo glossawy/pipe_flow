@@ -1,9 +1,5 @@
 sudo: false
 language: ruby
-env:
-  global:
-    COVERAGE=1
-    CC_TEST_REPORTER_ID=2ed4169686262bba86b94f45f05a5f9dcc00226feb75e3928563914a066512d6
 rvm:
   - 2.2
 
