@@ -2,6 +2,9 @@ module PipeFlow
   module Parser
     module AST
       class MethodCall < AST::Base
+
+        destination_only_node!
+
         attr_reader :env, :method_id, :arguments, :parameters
         def initialize(env, method_id, arguments)
           @env = env
