@@ -17,9 +17,9 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
+  - bundle exec rspec --warnings --order random
   - bundle exec rubocop -DESP
   - bundle exec rubycritic -f console -s 90 lib/
-  - bundle exec rspec --warnings --order random
   - bundle exec fasterer lib || true
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
