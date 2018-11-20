@@ -5,8 +5,6 @@ require 'pry'
 require 'simplecov'
 require 'simplecov-console'
 
-Dir[File.join(__dir__, 'support', '**', '*.rb')].each { |f| require f }
-
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::HTMLFormatter,
   SimpleCov::Formatter::Console,
@@ -16,6 +14,9 @@ SimpleCov.add_filter '/spec/'
 SimpleCov.start if ENV['COVERAGE']
 
 require 'pipe_flow'
+
+Dir[File.join(__dir__, 'support', '**', '*.rb')].each { |f| require f }
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
