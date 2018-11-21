@@ -78,5 +78,49 @@ RSpec.describe PipeFlow::Parser::Context do
         end
       end
     end
+
+    context 'given a pipeline with a proc as a destination' do
+      subject { instance.parse! { input >> proc { |x| x } } }
+
+      it 'returns the correct AST' do
+        is_expected.to be_pipeline_with(
+          an_ast_hole,
+          an_ast_block
+        )
+      end
+    end
+
+    context 'given a pipeline with a lambda as a destination' do
+      let(:test_block) { proc { input >> lambda { |x| x } } }
+
+      it 'returns the correct AST' do
+        is_expected.to be_pipeline_with(
+          an_ast_hole,
+          an_ast_block
+        )
+      end
+    end
+
+    context 'given a pipeline with a lambda (->) as a destination' do
+      let(:test_block) { proc { input >> ->(x) { x } } }
+
+      it 'returns the correct AST' do
+        is_expected.to be_pipeline_with(
+          an_ast_hole,
+          an_ast_block
+        )
+      end
+    end
+
+    context 'given a pipeline whose input is a proc' do
+      let(:test_block) { proc { input(proc { |x| x }) >> ->(x) { x } } }
+
+      it 'returns the correct AST' do
+        is_expected.to be_pipeline_with(
+          an_ast_literal,
+          an_ast_block
+        )
+      end
+    end
   end
 end

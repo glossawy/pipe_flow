@@ -1,8 +1,6 @@
 module PipeFlow
   module Parser
     class Context < BasicObject
-      using CoreRefinements::PipeFlowNodes
-
       attr_reader :bound_env
 
       def initialize(env)
@@ -29,7 +27,9 @@ module PipeFlow
       private
 
       def input(value = nil)
-        value.to_pipe_flow_node
+        return AST::Hole.instance if value.nil?
+
+        AST::Literal.new(value)
       end
     end
   end

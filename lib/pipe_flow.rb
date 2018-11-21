@@ -11,6 +11,7 @@ require 'pipe_flow/parser/ast/parameterized'
 require 'pipe_flow/parser/ast/base'
 require 'pipe_flow/parser/ast/hole'
 require 'pipe_flow/parser/ast/literal'
+require 'pipe_flow/parser/ast/block'
 require 'pipe_flow/parser/ast/method_call'
 require 'pipe_flow/parser/ast/pipe'
 

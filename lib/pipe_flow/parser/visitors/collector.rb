@@ -33,6 +33,10 @@ module PipeFlow
           visit(pipe.source)
           visit(pipe.destination)
         end
+
+        def visit_PipeFlow_Parser_AST_Block(block)
+          collected << block.original_proc
+        end
         # rubocop:enable Naming/MethodName
       end
     end

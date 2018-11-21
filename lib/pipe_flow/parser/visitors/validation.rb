@@ -16,9 +16,15 @@ module PipeFlow
           visit dst
         end
 
+        def verify_reification(node)
+          raise Errors::UnreifiableNodeError, "Cannot reify #{node}" unless node.reifiable?
+        end
+
         alias visit_PipeFlow_Parser_AST_Hole do_nothing
         alias visit_PipeFlow_Parser_AST_Literal do_nothing
-        alias visit_PipeFlow_Parser_AST_MethodCall do_nothing
+
+        alias visit_PipeFlow_Parser_AST_MethodCall verify_reification
+        alias visit_PipeFlow_Parser_AST_Block verify_reification
         # rubocop:enable Naming/MethodName
       end
     end
