@@ -12,12 +12,15 @@ module MethodCallHelpers
   define_param_generator :keyword, :key
   define_param_generator :required_keyword, :keyreq
   define_param_generator :variadic_keyword, :keyrest
+  define_param_generator :block, :block
 
   def self.random_for(type, name)
     if %i[req opt].include?(type)
       RandomDataHelpers.random_string
     elsif %i[key keyreq].include?(type)
       { name.to_s => RandomDataHelpers.random_string }
+    elsif type == :block
+      proc { RandomDataHelpers.random_string }
     elsif type == :rest
       0.upto(rand(0..3)).map { RandomDataHelpers.random_string }
     elsif type == :keyrest
@@ -36,10 +39,11 @@ module MethodCallHelpers
       let(:parameters) { params }
       let(:parameter_values) do
         values = params.map { |(type, n)| MethodCallHelpers.random_for(type, n) }
+
         values.group_by { |x| x.is_a?(Hash) }.map do |(is_hashes, vals)|
           next vals unless is_hashes
           [vals.reduce { |a, e| a.merge(e) }]
-        end.reduce { |a, e| a + e }
+        end.reduce { |a, e| a + e } || []
       end
 
       let(:parameter_names) { params.map { |(_, name)| name } }

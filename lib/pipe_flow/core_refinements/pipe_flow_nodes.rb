@@ -12,6 +12,12 @@ module PipeFlow
           Parser::AST::Hole.instance
         end
       end
+
+      refine Proc do
+        def to_pipe_flow_node
+          Parser::AST::Block.new(self)
+        end
+      end
     end
   end
 end

@@ -8,3 +8,9 @@ Metrics/LineLength:
 
 Style/Documentation:
   Enabled: no
+
+Naming/PredicateName:
+  Enabled: no
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma

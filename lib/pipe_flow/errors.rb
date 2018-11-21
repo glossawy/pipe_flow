@@ -34,5 +34,7 @@ module PipeFlow
         end
       end
     end
+
+    UnreifiableNodeError = Class.new(StandardError)
   end
 end
