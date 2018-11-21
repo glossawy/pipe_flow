@@ -42,5 +42,20 @@ RSpec.describe PipeFlow::Pipeline do
         expect(subject.call(123)).to eq(:test_result)
       end
     end
+
+    context 'a pipeline with proc input' do
+      let(:destination) { ->(x) { x } }
+      let(:input) { ->(x) { x } }
+      subject do
+        described_class.from_block do
+          input(input) >> destination
+        end
+      end
+
+      it 'evaluates the block' do
+        expect(destination).to receive(:call).with(input)
+        subject
+      end
+    end
   end
 end
