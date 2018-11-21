@@ -14,9 +14,7 @@ module PipeFlow
         end
 
         def dispatch(method_id, object)
-          send(method_id, object)
-        rescue NoMethodError => e
-          raise e if respond_to?(method_id, true)
+          return send(method_id, object) if respond_to?(method_id, true)
 
           visitable_super = visitable_supermethod_for(object.class)
           return dispatch(visitable_super, object) if visitable_super

@@ -1,8 +1,6 @@
 module PipeFlow
   module Parser
     class Context < BasicObject
-      using CoreRefinements::PipeFlowNodes
-
       attr_reader :bound_env
 
       def initialize(env)
@@ -11,15 +9,17 @@ module PipeFlow
 
       alias parse! instance_eval
 
-      def method_missing(method_id, *args)
+      def method_missing(method_id, *args, &block)
         return super if method_id == :input
 
-        AST::MethodCall.new(bound_env, method_id, args).tap do |mc|
-          return bound_env.receiver.instance_eval { send(method_id, *args) } unless mc.reifiable?
+        AST::MethodCall.new(bound_env, method_id, args, &block).tap do |mc|
+          unless mc.reifiable?
+            return bound_env.receiver.instance_eval { send(method_id, *args, &block) }
+          end
         end
       end
 
-      def respond_to_missing?(method_id, *args)
+      def respond_to_missing?(method_id, include_private)
         bound_env.receiver.send(:respond_to?, method_id, include_private) ||
           (method_id == :input && super)
       end
@@ -27,7 +27,9 @@ module PipeFlow
       private
 
       def input(value = nil)
-        value.to_pipe_flow_node
+        return AST::Hole.instance if value.nil?
+
+        AST::Literal.new(value)
       end
     end
   end
