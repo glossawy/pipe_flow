@@ -16,7 +16,7 @@ RSpec.describe PipeFlow::Parser::AST::Block do
       it { is_expected.not_to be_reifiable }
       it { is_expected.not_to be_lambda }
       context 'definition' do
-        subject { super().definition }
+        subject { super().to_definition }
         it { is_expected.to eq('proc { ... }') }
       end
     end
@@ -26,7 +26,7 @@ RSpec.describe PipeFlow::Parser::AST::Block do
       it { is_expected.to be_reifiable }
       it { is_expected.not_to be_lambda }
       context 'definition' do
-        subject { super().definition }
+        subject { super().to_definition }
         it { is_expected.to match(/proc { |x = [^,]+| ... }/) }
       end
     end
@@ -36,7 +36,7 @@ RSpec.describe PipeFlow::Parser::AST::Block do
       it { is_expected.to be_reifiable }
       it { is_expected.not_to be_lambda }
       context 'definition' do
-        subject { super().definition }
+        subject { super().to_definition }
         it { is_expected.to match(/proc { |a = [^,]+, b = [^,]+| ... }/) }
       end
     end
@@ -46,7 +46,7 @@ RSpec.describe PipeFlow::Parser::AST::Block do
       it { is_expected.to be_reifiable }
       it { is_expected.to be_lambda }
       context 'definition' do
-        subject { super().definition }
+        subject { super().to_definition }
         it { is_expected.to eq('->(x) { ... }') }
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe PipeFlow::Parser::AST::Block do
       it { is_expected.not_to be_reifiable }
       it { is_expected.to be_lambda }
       context 'definition' do
-        subject { super().definition }
+        subject { super().to_definition }
         it { is_expected.to eq('-> { ... }') }
       end
     end

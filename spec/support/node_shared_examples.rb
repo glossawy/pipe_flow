@@ -12,7 +12,7 @@ RSpec.shared_examples 'a PipeFlow AST Node' do
   context 'interface' do
     %i[== to_s input_needed?].each do |method_id|
       it "implements #{method_id}" do
-        expect(described_class.instance_methods(false)).to include(method_id)
+        expect(described_class.public_instance_methods).to include(method_id)
       end
     end
   end
