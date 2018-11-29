@@ -9,6 +9,9 @@ Metrics/LineLength:
 Style/Documentation:
   Enabled: no
 
+Style/AsciiComments:
+  Enabled: no
+
 Naming/PredicateName:
   Enabled: no
 
