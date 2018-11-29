@@ -12,3 +12,13 @@ UtilityFunction:
     enabled: false
   UtilityFunction:
     enabled: false
+
+"lib/pipe_flow/parser/visitors":
+  UncommunicativeMethodName:
+    enabled: false
+  UncommunicativeVariableName:
+    enabled: false
+  ManualDispatch:
+    enabled: false
+  FeatureEnvy:
+    enabled: false

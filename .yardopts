@@ -1,0 +1,1 @@
+--hide-tag pipe_flow.source_only --hide-tag pipe_flow.destination_only lib/**/*.rb - README.md
