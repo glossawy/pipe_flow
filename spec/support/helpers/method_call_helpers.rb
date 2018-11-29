@@ -53,7 +53,7 @@ module MethodCallHelpers
       end
 
       it 'derives a sane definition' do
-        expect(subject.definition).to match(expected_definition)
+        expect(subject.to_definition).to match(expected_definition)
       end
 
       if required_pos_count == 0 then
