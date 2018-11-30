@@ -87,6 +87,11 @@
 
   
   
+  <dl>
+      <dt>Extended by:</dt>
+      <dd><span class='object_link'><a href="DSL.html" title="PipeFlow::Parser::Visitors::DSL (module)">DSL</a></span></dd>
+  </dl>
+  
   
   
   
@@ -152,9 +157,42 @@ structure.</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#verify_reification-instance_method" title="#verify_reification (instance method)">#<strong>verify_reification</strong>(node)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="DSL.html" title="PipeFlow::Parser::Visitors::DSL (module)">DSL</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="DSL.html#alias_visit-instance_method" title="PipeFlow::Parser::Visitors::DSL#alias_visit (method)">alias_visit</a></span>, <span class='object_link'><a href="DSL.html#on_visit-instance_method" title="PipeFlow::Parser::Visitors::DSL#on_visit (method)">on_visit</a></span>, <span class='object_link'><a href="DSL.html#on_visit_skip-instance_method" title="PipeFlow::Parser::Visitors::DSL#on_visit_skip (method)">on_visit_skip</a></span></p>
 
   
   
@@ -285,15 +323,67 @@ the pipeline.</p>
       <pre class="lines">
 
 
-21
-22
-23</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/visitors/validation.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/visitors/validation.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate'>validate</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_visit'>visit</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="verify_reification-instance_method">
+  
+    #<strong>verify_reification</strong>(node)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Errors.html#UnreifiableNodeError-constant" title="PipeFlow::Errors::UnreifiableNodeError (constant)">Errors::UnreifiableNodeError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/visitors/validation.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_verify_reification'>verify_reification</span><span class='lparen'>(</span><span class='id identifier rubyid_node'>node</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="../../Errors.html" title="PipeFlow::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Errors.html#UnreifiableNodeError-constant" title="PipeFlow::Errors::UnreifiableNodeError (constant)">UnreifiableNodeError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cannot reify </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_node'>node</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_node'>node</span><span class='period'>.</span><span class='id identifier rubyid_reifiable?'>reifiable?</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -305,7 +395,7 @@ the pipeline.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Nov 29 23:13:25 2018 by
+  Generated on Fri Nov 30 01:20:05 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.2.10).
 </div>
