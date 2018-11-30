@@ -1,15 +1,34 @@
 module PipeFlow
   module Parser
     module Visitors
+      #
+      # AST visitor specialized to collecting derived values from the tree into
+      # an array.
+      #
+      # @note +Collector+ is stateful and should only be used once.
+      #
       class Collector < Visitors::Visitor
-        def collect(*args)
-          visit(*args)
+        #
+        # Traverse AST collecting values into an internal array which is then
+        # returned once collection is finished.
+        #
+        # @param object (see Visitor#visit)
+        #
+        # @return [Array] list of collected values
+        #
+        def collect(object)
+          visit(object)
           collected
         end
 
+        #
+        # @return [Array] current list of collected values
+        #
         def collected
           @collected ||= []
         end
+
+        # @!visibility
 
         # rubocop:disable Naming/MethodName
         def visit_PipeFlow_Parser_AST_Hole(_hole)
