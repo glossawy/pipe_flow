@@ -22,3 +22,7 @@ after_script:
 
 notifications:
   - false
+
+branches:
+  only:
+    - master
