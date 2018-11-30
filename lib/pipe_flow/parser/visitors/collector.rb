@@ -8,6 +8,8 @@ module PipeFlow
       # @note +Collector+ is stateful and should only be used once.
       #
       class Collector < Visitors::Visitor
+        extend Visitors::DSL
+
         #
         # Traverse AST collecting values into an internal array which is then
         # returned once collection is finished.
@@ -28,19 +30,16 @@ module PipeFlow
           @collected ||= []
         end
 
-        # @!visibility
-
-        # rubocop:disable Naming/MethodName
-        def visit_PipeFlow_Parser_AST_Hole(_hole)
+        on_visit AST::Hole do |_hole|
           collected << ->(x) { x }
         end
 
-        def visit_PipeFlow_Parser_AST_Literal(literal)
+        on_visit AST::Literal do |literal|
           value = literal.value
           collected << ->(_input) { value }
         end
 
-        def visit_PipeFlow_Parser_AST_MethodCall(method_call)
+        on_visit AST::MethodCall do |method_call|
           receiver = method_call.env.eval('self')
           method_name = method_call.method_id
           args = method_call.arguments
@@ -48,15 +47,14 @@ module PipeFlow
           collected << ->(x) { receiver.send(method_name, x, *args) }
         end
 
-        def visit_PipeFlow_Parser_AST_Pipe(pipe)
+        on_visit AST::Pipe do |pipe|
           visit(pipe.source)
           visit(pipe.destination)
         end
 
-        def visit_PipeFlow_Parser_AST_Block(block)
+        on_visit AST::Block do |block|
           collected << block.original_proc
         end
-        # rubocop:enable Naming/MethodName
       end
     end
   end
