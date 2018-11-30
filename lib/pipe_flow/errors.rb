@@ -1,9 +1,15 @@
 module PipeFlow
   module Errors
     class InvalidSource < StandardError
+      #
+      # Create an instance of this error for the given {Parser::AST::Base} node.
+      #
+      # @param [Parser::AST::Base] source
+      #
+      # @return [InvalidSource]
+      #
       def self.[](source)
         new msg_for(source)
-        new "#{source.class.name} is an invalid pipeline source"
       end
 
       def self.msg_for(node)
@@ -19,6 +25,13 @@ module PipeFlow
     end
 
     class InvalidDestination < StandardError
+      #
+      # {include:InvalidSource.[]}
+      #
+      # @param [Parser::AST::Base] destination
+      #
+      # @return [InvalidDestination]
+      #
       def self.[](destination)
         new msg_for(destination)
       end
