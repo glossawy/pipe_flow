@@ -30,7 +30,8 @@ module PipeFlow
         #   end
         #   SomeVisitor.new.visit('abc')
         #
-        # @note Method need not only take {AST::Base} objects, they
+        # @note It is recommended that visitor implementations extend {Visitors::DSL} rather
+        #       than write method names manually.
         #
         # @param object Any object, though typically an {AST::Base} instance
         #

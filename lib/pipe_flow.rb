@@ -15,6 +15,7 @@ require 'pipe_flow/parser/ast/block'
 require 'pipe_flow/parser/ast/method_call'
 require 'pipe_flow/parser/ast/pipe'
 
+require 'pipe_flow/parser/visitors/dsl'
 require 'pipe_flow/parser/visitors/visitor'
 require 'pipe_flow/parser/visitors/validation'
 require 'pipe_flow/parser/visitors/collector'

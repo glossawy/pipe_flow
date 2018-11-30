@@ -104,62 +104,48 @@ module PipeFlow
           parameters.any?(:positional?)
         end
 
+        # @!method reifiable?
+        #   Reifiability determines representability and usability within the context of a pipeline.
+        #   A parameterized node is reifiable if and only if it, with the metadata available, can
+        #   reasonably be used as a _hole_ or _destination_ within a pipeline.
         #
-        # Reifiability determines representability and usability within the context of a pipeline.
-        # A parameterized node is reifiable if and only if it, with the metadata available, can
-        # reasonably be used as a _hole_ or _destination_ within a pipeline.
-        #
-        # @example Distinction between Reifiable and Non-Reifiable for Method Calls
-        #   def method_call(x, y, z)
-        #     # ...
-        #   end
-        #   # Partial method calls *can* be conceived to have holes:
-        #   method_call(1)          # => Possibly method_call(·, ·, z = 1) but is not reifiable
-        #                           #    since it cannot fit in a single-value pipeline
-        #   method_call(1, :a)      # => Possibly method_call(·, y = 1, z = :a) which is reifiable
-        #   # Complete method calls *cannot* be conceived to have holes:
-        #   method_call(1, :a, :b)  # => method_call(x = 1, y = :a, z = :b) and not reifiable
+        #   @example Distinction between Reifiable and Non-Reifiable for Method Calls
+        #     def method_call(x, y, z)
+        #       # ...
+        #     end
+        #     # Partial method calls *can* be conceived to have holes:
+        #     method_call(1)          # => Possibly method_call(·, ·, z = 1) but is not reifiable
+        #                             #    since it cannot fit in a single-value pipeline
+        #     method_call(1, :a)      # => Possibly method_call(·, y = 1, z = :a) which is reifiable
+        #     # Complete method calls *cannot* be conceived to have holes:
+        #     method_call(1, :a, :b)  # => method_call(x = 1, y = :a, z = :b) and not reifiable
         #
         #
-        # @abstract
-        # @return [Boolean]
-        # @see AST::MethodCall for example use
-        # @see AST::Block for example use
-        #
-        def reifiable?
-          raise NotImplementedError,
-                'Parameterized client must provide own #reifiable? implementation'
-        end
+        #   @abstract
+        #   @return [Boolean]
+        #   @see AST::MethodCall example use in MethodCall
+        #   @see AST::Block example use in Block
 
+        # @!method to_representation
+        #   Attempts to derive a sane string representing the conceptual meaning
+        #   of the parameterized node in the pipeline.
         #
-        # Attempts to derive a sane string representing the conceptual meaning
-        # of the parameterized node in the pipeline.
+        #   @note Often this involves representing some parameter as a hole, hence the
+        #         provision of {#parameter_list} and {#parameter_list_with_hole}.
         #
-        # @note Often this involves representing some parameter as a hole, hence the
-        #       provision of {#parameter_list} and {#parameter_list_with_hole}.
-        #
-        # @abstract
-        # @return [String]
-        # @see AST::MethodCall for example use
-        # @see AST::Block for example use
-        #
-        def to_representation
-          raise NotImplementedError,
-                'Parameterized client must provide own #to_representation implementation'
-        end
+        #   @abstract
+        #   @return [String]
+        #   @see AST::MethodCall example use in MethodCall
+        #   @see AST::Block example use in Block
 
-        # Attempts to derive a sane string representing a likely definition
-        # for the parameterized object.
+        # @!method to_definition
+        #   Attempts to derive a sane string representing a likely definition
+        #   for the parameterized object.
         #
-        # @abstract
-        # @return [String]
-        # @see AST::MethodCall for example use
-        # @see AST::Block for example use
-        #
-        def to_definition
-          raise NotImplementedError,
-                'Parameterized client must provide own #to_definition implementation'
-        end
+        #   @abstract
+        #   @return [String]
+        #   @see AST::MethodCall example use in MethodCall
+        #   @see AST::Block example use in Block
 
         #
         # Attempts to determine a valid representation of the node, based on reifiability.
@@ -172,8 +158,8 @@ module PipeFlow
         #       {#reifiable?}, {#to_definition}, and {#to_representation}
         #
         # @return [String]
-        # @see AST::MethodCall for example use
-        # @see AST::Block for example use
+        # @see AST::MethodCall example use in MethodCall
+        # @see AST::Block example use in Block
         #
         def to_s
           return to_definition unless reifiable?

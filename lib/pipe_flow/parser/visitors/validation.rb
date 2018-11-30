@@ -5,6 +5,8 @@ module PipeFlow
       # AST Visitor specialized in validating AST structure.
       #
       class Validator < Visitors::Visitor
+        extend Visitors::DSL
+
         #
         # Traverse AST tree rooted at +object+ and ensure validity
         # of tree structure.
@@ -24,8 +26,7 @@ module PipeFlow
 
         # @!visibility private
 
-        # rubocop:disable Naming/MethodName
-        def visit_PipeFlow_Parser_AST_Pipe(pipe)
+        on_visit AST::Pipe do |pipe|
           src = pipe.source
           dst = pipe.destination
 
@@ -40,12 +41,11 @@ module PipeFlow
           raise Errors::UnreifiableNodeError, "Cannot reify #{node}" unless node.reifiable?
         end
 
-        alias visit_PipeFlow_Parser_AST_Hole do_nothing
-        alias visit_PipeFlow_Parser_AST_Literal do_nothing
+        on_visit_skip AST::Hole
+        on_visit_skip AST::Literal
 
-        alias visit_PipeFlow_Parser_AST_MethodCall verify_reification
-        alias visit_PipeFlow_Parser_AST_Block verify_reification
-        # rubocop:enable Naming/MethodName
+        alias_visit AST::MethodCall, to: :verify_reification
+        alias_visit AST::Block, to: :verify_reification
       end
     end
   end
