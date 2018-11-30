@@ -1,25 +1,80 @@
 module PipeFlow
   module Parser
     module Visitors
+      #
+      # Specialized class for traversing a pipeline AST
+      #
       class Visitor
+        #
+        # Start a visitation recurrence for the given AST. It is expected that for any relevant
+        # visitable <i>classes</i> of objects there exist a method for that class. Given a class
+        # with the name +Some::Module::Path+, there ought to be a +visit_Some_Module_Path+ method
+        # taking the visited object as an argument.
+        #
+        # If a method is not defined for the object's class, then if any methods are defined for
+        # visiting any of an object's superclasses, visitation will be attempted on that method.
+        #
+        # @example Visiting an Object by Class
+        #   class SomeVisitor < Visitor
+        #     def visit_String(str)
+        #       # ...
+        #     end
+        #   end
+        #   SomeVisitor.new.visit('abc')
+        #
+        # @example Visiting an Object by Superclass
+        #   class SomeVisitor < Visitor
+        #     def visit_Object(obj)
+        #       # ...
+        #     end
+        #   end
+        #   SomeVisitor.new.visit('abc')
+        #
+        # @note Method need not only take {AST::Base} objects, they
+        #
+        # @param object Any object, though typically an {AST::Base} instance
+        #
+        # @return a visitor dependent value, possibly meaningless
+        # @raise [TypeError] if no +visit_+ method exists for the class of +object+ nor any
+        #                    of it's superclasses.
+        #
         def visit(object)
-          visit_method = method_for_class(object.class)
-          dispatch(visit_method, object)
+          find_visitable_method_for(object.class) do |visit_method_id|
+            send(visit_method_id, object)
+          end
+
+          raise TypeError, "Unable to visit #{object.class}"
         end
 
-        private
-
+        #
+        # Does nothing with the given object, this is provided as a utility for visitors to
+        # point methods to when a class is valid to visit, but has no meaningful semantics.
+        #
+        #
+        # @param object
+        #
+        # @return [object] the given object
+        #
         def do_nothing(object)
           object
         end
 
-        def dispatch(method_id, object)
-          return send(method_id, object) if respond_to?(method_id, true)
+        private
 
-          visitable_super = visitable_supermethod_for(object.class)
-          return dispatch(visitable_super, object) if visitable_super
+        #
+        # Attempts to derive an appropriate +visit_+ method to call based on a class
+        # and it's superclasses.
+        #
+        # @param [Class] klass class we are trying to visit
+        #
+        # @yieldparam [Symbol] method_id if a visitable method is found
+        # @return [Object,nil] result of block, or nil if no method found
+        #
+        def find_visitable_method_for(klass)
+          method_id = method_for_class(klass)
+          method_id = visitable_supermethod_for(klass) unless respond_to?(method_id, true)
 
-          raise TypeError, "Unable to visit #{object.class}"
+          yield method_id unless method_id.nil?
         end
 
         def method_for_class(klass)
@@ -27,6 +82,13 @@ module PipeFlow
           "visit_#{method_suffix}"
         end
 
+        #
+        # Find a +visit_+ method for one of a class' parents.
+        #
+        # @param [Class] klass class we are trying to visit
+        #
+        # @return [Symbol,nil] a method id to visit, or nil if none found
+        #
         def visitable_supermethod_for(klass)
           klass.ancestors
                .map { |superclass| method_for_class(superclass) }
