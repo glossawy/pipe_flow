@@ -5,7 +5,6 @@ module PipeFlow
     # method evaluation.
     #
     class Context < BasicObject
-
       # Environment to which pipeline evaluation should be considered
       # bound.
       attr_reader :bound_env
