@@ -1,6 +1,13 @@
 module PipeFlow
   module Parser
+    #
+    # A minimal parsing context that any pipeline code is executed within, handling partial
+    # method evaluation.
+    #
     class Context < BasicObject
+
+      # Environment to which pipeline evaluation should be considered
+      # bound.
       attr_reader :bound_env
 
       def initialize(env)
