@@ -40,7 +40,7 @@ module PipeFlow
         #
         def visit(object)
           find_visitable_method_for(object.class) do |visit_method_id|
-            send(visit_method_id, object)
+            return send(visit_method_id, object)
           end
 
           raise TypeError, "Unable to visit #{object.class}"
@@ -74,7 +74,7 @@ module PipeFlow
           method_id = method_for_class(klass)
           method_id = visitable_supermethod_for(klass) unless respond_to?(method_id, true)
 
-          yield method_id unless method_id.nil?
+          yield method_id if method_id
         end
 
         def method_for_class(klass)
