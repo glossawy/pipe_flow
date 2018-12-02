@@ -49,5 +49,6 @@ module PipeFlow
     end
 
     UnreifiableNodeError = Class.new(StandardError)
+    MisplacedPartialError = Class.new(StandardError)
   end
 end
