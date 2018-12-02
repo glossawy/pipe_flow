@@ -8,6 +8,10 @@ require 'pipe_flow/core_refinements/functional_procs'
 require 'pipe_flow/parser/ast/parameterized/parameter'
 require 'pipe_flow/parser/ast/parameterized'
 
+require 'pipe_flow/parser/variable_capture/captured_var'
+require 'pipe_flow/parser/variable_capture/captured_proc'
+require 'pipe_flow/parser/variable_capture'
+
 require 'pipe_flow/parser/ast/base'
 require 'pipe_flow/parser/ast/hole'
 require 'pipe_flow/parser/ast/literal'
