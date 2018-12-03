@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::Visitors::Collector do
+RSpec.describe PipeFlow::Visitors::Collector do
   let(:instance) { described_class.new }
 
   context '#visit' do

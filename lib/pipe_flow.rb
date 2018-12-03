@@ -22,10 +22,10 @@ require 'pipe_flow/ast/block'
 require 'pipe_flow/ast/method_call'
 require 'pipe_flow/ast/pipe'
 
-require 'pipe_flow/parser/visitors/dsl'
-require 'pipe_flow/parser/visitors/visitor'
-require 'pipe_flow/parser/visitors/validation'
-require 'pipe_flow/parser/visitors/collector'
+require 'pipe_flow/visitors/dsl'
+require 'pipe_flow/visitors/visitor'
+require 'pipe_flow/visitors/validation'
+require 'pipe_flow/visitors/collector'
 
 require 'pipe_flow/parser/context'
 
