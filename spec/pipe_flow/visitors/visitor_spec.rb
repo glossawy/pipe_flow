@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::Visitors::Visitor do
+RSpec.describe PipeFlow::Visitors::Visitor do
   let(:instance) { described_class.new }
   subject { instance }
 

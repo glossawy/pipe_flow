@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::Visitors::Validator do
+RSpec.describe PipeFlow::Visitors::Validator do
   include ASTHelpers
 
   let(:instance) { described_class.new }

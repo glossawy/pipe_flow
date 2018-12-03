@@ -1,7 +1,7 @@
-RSpec.describe PipeFlow::Parser::Visitors::DSL do
+RSpec.describe PipeFlow::Visitors::DSL do
   include RandomDataHelpers
 
-  let(:example_visitor) { Class.new(PipeFlow::Parser::Visitors::Visitor) }
+  let(:example_visitor) { Class.new(PipeFlow::Visitors::Visitor) }
   let(:class_definition) { proc {} }
   let(:visit_type_name) { "Test#{random_string}" }
   let(:test_visit_type) { Struct.new(visit_type_name) }
