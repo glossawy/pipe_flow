@@ -335,7 +335,7 @@ handling partial method evaluation.</p>
 </span>  <span class='comment'># method calls as arguments to procs/other methods.
 </span>  <span class='id identifier rubyid_reject_partials'>reject_partials</span><span class='lparen'>(</span><span class='id identifier rubyid_method_id'>method_id</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
 
-  <span class='const'><span class='object_link'><a href="AST.html" title="PipeFlow::Parser::AST (module)">AST</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AST/MethodCall.html" title="PipeFlow::Parser::AST::MethodCall (class)">MethodCall</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="AST/MethodCall.html#initialize-instance_method" title="PipeFlow::Parser::AST::MethodCall#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_bound_env'>bound_env</span><span class='comma'>,</span> <span class='id identifier rubyid_method_id'>method_id</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_mc'>mc</span><span class='op'>|</span>
+  <span class='const'><span class='object_link'><a href="../AST.html" title="PipeFlow::AST (module)">AST</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AST/MethodCall.html" title="PipeFlow::AST::MethodCall (class)">MethodCall</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../AST/MethodCall.html#initialize-instance_method" title="PipeFlow::AST::MethodCall#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_bound_env'>bound_env</span><span class='comma'>,</span> <span class='id identifier rubyid_method_id'>method_id</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_mc'>mc</span><span class='op'>|</span>
     <span class='comment'># If we can&#39;t reify, just pass the call off to the original receiver and let the method
 </span>    <span class='comment'># call happen, or raise a NoMethodError. Seems the best way to provide the proper error
 </span>    <span class='comment'># context.
@@ -401,7 +401,7 @@ handling partial method evaluation.</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Dec  3 02:37:03 2018 by
+  Generated on Mon Dec  3 03:54:35 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.2.10).
 </div>

@@ -275,7 +275,7 @@ partial method calls.</p>
       <pre class="code"><span class="info file"># File 'lib/pipe_flow/errors.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reject_partials'>reject_partials</span><span class='lparen'>(</span><span class='id identifier rubyid_referenced_name'>referenced_name</span><span class='comma'>,</span> <span class='id identifier rubyid_values'>values</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_values'>values</span> <span class='kw'>unless</span> <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_val'>val</span><span class='op'>|</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'><span class='object_link'><a href="Parser.html" title="PipeFlow::Parser (module)">Parser</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parser/AST.html" title="PipeFlow::Parser::AST (module)">AST</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parser/AST/MethodCall.html" title="PipeFlow::Parser::AST::MethodCall (class)">MethodCall</a></span></span> <span class='rbrace'>}</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_values'>values</span> <span class='kw'>unless</span> <span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_val'>val</span><span class='op'>|</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'><span class='object_link'><a href="AST.html" title="PipeFlow::AST (module)">AST</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AST/MethodCall.html" title="PipeFlow::AST::MethodCall (class)">MethodCall</a></span></span> <span class='rbrace'>}</span>
 
   <span class='op'>::</span><span class='const'>Kernel</span><span class='period'>.</span><span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="" title="PipeFlow::Errors (module)">Errors</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="#MisplacedPartialError-constant" title="PipeFlow::Errors::MisplacedPartialError (constant)">MisplacedPartialError</a></span></span><span class='comma'>,</span>
                  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Found a partial method call as an argument to a proc or method</span><span class='tstring_end'>&#39;</span></span> \
@@ -292,7 +292,7 @@ partial method calls.</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Dec  3 02:37:02 2018 by
+  Generated on Mon Dec  3 03:54:34 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.16 (ruby-2.2.10).
 </div>
