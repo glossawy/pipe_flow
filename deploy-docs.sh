@@ -15,12 +15,12 @@ branch_is_new=true
   git fetch >/dev/null
   if git checkout gh-pages 2>/dev/null; then
     branch_is_new=false
+    git reset origin/gh-pages --hard >/dev/null
+    git fetch >/dev/null
   else
     git checkout -b gh-pages
     touch .nojekyll
   fi
-  git fetch >/dev/null
-  git reset origin/gh-pages --hard >/dev/null
 )
 
 # Install and run yard
