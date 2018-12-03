@@ -1,11 +1,11 @@
-RSpec.describe PipeFlow::Parser::AST::Parameterized do
+RSpec.describe PipeFlow::AST::Parameterized do
   include RandomDataHelpers
 
   let(:parameterized_double) { double('Parameterized') }
   let(:parameters) { [] }
 
   before do
-    parameter_list = parameters.map { |(type, name)| PipeFlow::Parser::AST::Parameterized::Parameter.new(type, name) }
+    parameter_list = parameters.map { |(type, name)| PipeFlow::AST::Parameterized::Parameter.new(type, name) }
     allow(parameterized_double).to receive(:parameters).and_return(parameter_list)
     parameterized_double.singleton_class.send(:include, described_class)
   end

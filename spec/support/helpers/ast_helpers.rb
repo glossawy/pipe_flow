@@ -2,13 +2,13 @@ module ASTHelpers
   module_function
 
   def base_class
-    PipeFlow::Parser::AST::Base
+    PipeFlow::AST::Base
   end
 
   def all_node_classes
-    PipeFlow::Parser::AST
+    PipeFlow::AST
       .constants
-      .map { |c| PipeFlow::Parser::AST.const_get(c) }
+      .map { |c| PipeFlow::AST.const_get(c) }
       .select { |c| c < base_class }
   end
 end

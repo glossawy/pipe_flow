@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::AST::Block do
+RSpec.describe PipeFlow::AST::Block do
   include MethodCallHelpers
 
   it_behaves_like 'a PipeFlow AST Node'

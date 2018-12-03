@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::AST::Hole do
+RSpec.describe PipeFlow::AST::Hole do
   it_behaves_like 'a PipeFlow AST Node'
 
   let(:instance) { described_class.instance }
