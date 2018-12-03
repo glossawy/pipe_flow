@@ -91,8 +91,8 @@ module PipeFlow
       #
       def visitable_supermethod_for(klass)
         klass.ancestors
-              .map { |superclass| method_for_class(superclass) }
-              .find { |supermethod| respond_to?(supermethod) }
+             .map { |superclass| method_for_class(superclass) }
+             .find { |supermethod| respond_to?(supermethod) }
       end
     end
   end

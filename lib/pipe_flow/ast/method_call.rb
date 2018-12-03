@@ -13,7 +13,7 @@ module PipeFlow
         @arguments = arguments
         @block = block
         @parameters = env.eval("method('#{method_id}').parameters")
-                          .map { |metadata| Parameter.new(*metadata) }
+                         .map { |metadata| Parameter.new(*metadata) }
       end
 
       #
