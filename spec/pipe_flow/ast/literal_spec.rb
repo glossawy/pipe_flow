@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::AST::Literal do
+RSpec.describe PipeFlow::AST::Literal do
   it_behaves_like 'a PipeFlow AST Node'
 
   subject { instance }

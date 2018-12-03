@@ -2,9 +2,9 @@ module PipeFlow
   module Errors
     class InvalidSource < StandardError
       #
-      # Create an instance of this error for the given {Parser::AST::Base} node.
+      # Create an instance of this error for the given {AST::Base} node.
       #
-      # @param [Parser::AST::Base] source
+      # @param [AST::Base] source
       #
       # @return [InvalidSource]
       #
@@ -14,7 +14,7 @@ module PipeFlow
 
       def self.msg_for(node)
         case node
-        when Parser::AST::MethodCall
+        when AST::MethodCall
           'An incomplete method call is a valid right-hand side of a pipeline but not ' \
           "a valid left-hand side (#{node} >> ... is invalid)"
         else
@@ -28,7 +28,7 @@ module PipeFlow
       #
       # {include:InvalidSource.[]}
       #
-      # @param [Parser::AST::Base] destination
+      # @param [AST::Base] destination
       #
       # @return [InvalidDestination]
       #
@@ -38,7 +38,7 @@ module PipeFlow
 
       def self.msg_for(node)
         case node
-        when Parser::AST::Literal
+        when AST::Literal
           "#{node.value} cannot be the right-hand side of a pipeline " \
           "(... >> #{node} is invalid)"
         else
@@ -63,7 +63,7 @@ module PipeFlow
     # @raise [Errors::MisplacedPartialError] if any of +values+ is a partial method call
     #
     def reject_partials(referenced_name, values)
-      return values unless values.any? { |val| val.is_a? Parser::AST::MethodCall }
+      return values unless values.any? { |val| val.is_a? AST::MethodCall }
 
       ::Kernel.raise Errors::MisplacedPartialError,
                      'Found a partial method call as an argument to a proc or method' \

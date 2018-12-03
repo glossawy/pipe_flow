@@ -12,8 +12,8 @@ module PipeFlow
     #   a unary proc.
     #
     def self.from_block(&block)
-      validator = Parser::Visitors::Validator.new
-      collector = Parser::Visitors::Collector.new
+      validator = Visitors::Validator.new
+      collector = Visitors::Collector.new
 
       ast = Parser::Context.new(block.binding).parse!(&block)
       validator.validate(ast)

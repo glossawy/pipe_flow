@@ -1,6 +1,6 @@
 RSpec.shared_examples 'a PipeFlow AST Node' do
   it 'is a descendant of the base node class' do
-    expect(described_class).to be < PipeFlow::Parser::AST::Base
+    expect(described_class).to be < PipeFlow::AST::Base
   end
 
   describe '#to_h' do

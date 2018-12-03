@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::AST::MethodCall do
+RSpec.describe PipeFlow::AST::MethodCall do
   include RandomDataHelpers
   include MethodCallHelpers
   extend MethodCallHelpers
