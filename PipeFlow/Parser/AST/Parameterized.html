@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: PipeFlow::Parser::AST::Parameterized
+  
+    &mdash; Documentation by YARD 0.9.16
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "PipeFlow::Parser::AST::Parameterized";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (P)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../PipeFlow.html" title="PipeFlow (module)">PipeFlow</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Parser.html" title="PipeFlow::Parser (module)">Parser</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../AST.html" title="PipeFlow::Parser::AST (module)">AST</a></span></span>
+     &raquo; 
+    <span class="title">Parameterized</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: PipeFlow::Parser::AST::Parameterized
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="Block.html" title="PipeFlow::Parser::AST::Block (class)">Block</a></span>, <span class='object_link'><a href="MethodCall.html" title="PipeFlow::Parser::AST::MethodCall (class)">MethodCall</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/pipe_flow/parser/ast/parameterized.rb<span class="defines">,<br />
+  lib/pipe_flow/parser/ast/parameterized/parameter.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>General utilities for managing nodes representing parameterized logic, like
+blocks and method calls (i.e. thouse that have parameter lists).</p>
+
+<p>It is expected that the including <code>module</code>/<code>class</code>
+defines a <code>#parameters</code> method that returns an array of
+parameters in the format used by Proc#parameters. That is
+<code>param_type</code>, <code>param_name</code> pairs.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Parameterized/Parameter.html" title="PipeFlow::Parser::AST::Parameterized::Parameter (class)">Parameter</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#accepts_block%3F-instance_method" title="#accepts_block? (instance method)">#<strong>accepts_block?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are a block parameter (e.g. <tt>&amp;block</tt>).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#arity-instance_method" title="#arity (instance method)">#<strong>arity</strong>  &#x21d2; Range </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns an arity Range where the lower bound is the required number of
+arguments (including a required options hash if a required keyword
+parameter exists) and the upper bound is the maximum number of arguments
+(including an options hash if a keyword parameter exists) which may be
+infinite.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_block_param%3F-instance_method" title="#has_block_param? (instance method)">#<strong>has_block_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are a block parameter (e.g. <tt>&amp;block</tt>)</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_key_param%3F-instance_method" title="#has_key_param? (instance method)">#<strong>has_key_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are both a keyword parameter and optional.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_keyreq_param%3F-instance_method" title="#has_keyreq_param? (instance method)">#<strong>has_keyreq_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are both a keyword parameter and required.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_keyrest_param%3F-instance_method" title="#has_keyrest_param? (instance method)">#<strong>has_keyrest_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are a keyword rest parameter (e.g. <tt>**kwargs</tt>).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_keyword_param%3F-instance_method" title="#has_keyword_param? (instance method)">#<strong>has_keyword_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>checks if any parameters are a keyword parameter.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_opt_param%3F-instance_method" title="#has_opt_param? (instance method)">#<strong>has_opt_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are positional and optional.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_positional_param%3F-instance_method" title="#has_positional_param? (instance method)">#<strong>has_positional_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>checks if any parameters are a positional parameter.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_req_param%3F-instance_method" title="#has_req_param? (instance method)">#<strong>has_req_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are positional and required.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#has_rest_param%3F-instance_method" title="#has_rest_param? (instance method)">#<strong>has_rest_param?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Checks if any parameters are a rest parameter (e.g. <tt>*args</tt>).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reifiable%3F-instance_method" title="#reifiable? (instance method)">#<strong>reifiable?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Reifiability determines representability and usability within the context
+of a pipeline.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_definition-instance_method" title="#to_definition (instance method)">#<strong>to_definition</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to derive a sane string representing a likely definition for the
+parameterized object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_representation-instance_method" title="#to_representation (instance method)">#<strong>to_representation</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to derive a sane string representing the conceptual meaning of the
+parameterized node in the pipeline.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Attempts to determine a valid representation of the node, based on
+reifiability.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="accepts_block?-instance_method">
+  
+    #<strong>accepts_block?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are a block parameter (e.g. <tt>&amp;block</tt>)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_accepts_block?'>accepts_block?</span>
+  <span class='id identifier rubyid_has_block_param?'>has_block_param?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="arity-instance_method">
+  
+    #<strong>arity</strong>  &#x21d2; <tt>Range</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns an arity Range where the lower bound is the required number of
+arguments (including a required options hash if a required keyword
+parameter exists) and the upper bound is the maximum number of arguments
+(including an options hash if a keyword parameter exists) which may be
+infinite.</p>
+
+<p>Because of ruby&#39;s support for optional positional and keyword
+parameters, the real arity of a method is a range of values. Additionally,
+because of support for rest parameters the upper limit can be,
+conceptually, infinite. To represent an infinite upper bound,
+Float::INFINITY is used.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Range</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 26</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_arity'>arity</span>
+  <span class='ivar'>@arity</span> <span class='op'>||=</span> <span class='kw'>begin</span>
+    <span class='comment'># 1. For the lower bound:
+</span>    <span class='comment'>#   a. (# of required positional parameters) + (1 if keyword parameters are required)
+</span>    <span class='comment'>#
+</span>    <span class='comment'># 2. For the upper bound:
+</span>    <span class='comment'>#   a. (# of positional parameters) + (1 if any keyword parameters exist)
+</span>    <span class='comment'>#   b. OR, Infinity if a rest arguments exists.
+</span>    <span class='comment'>#
+</span>    <span class='comment'># N.B.:
+</span>    <span class='comment'>#   - 2b) does not include keyrest (e.g. **kwargs)
+</span>    <span class='comment'>#   - #keyword? includes keyrest (thus contributing the the +1 in 2a)
+</span>    <span class='comment'>#   - #positional? includes rest, but is excluded in 2a from the count
+</span>    <span class='comment'>#
+</span>    <span class='lparen'>(</span><span class='id identifier rubyid_lower_bound'>lower_bound</span><span class='op'>..</span><span class='id identifier rubyid_upper_bound'>upper_bound</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_block_param?-instance_method">
+  
+    #<strong>has_block_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are a block parameter (e.g. <tt>&amp;block</tt>)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84
+85
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 82</span>
+
+<span class='const'><span class='object_link'><a href="Parameterized/Parameter.html" title="PipeFlow::Parser::AST::Parameterized::Parameter (class)">Parameter</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parameterized/Parameter.html#TYPES-constant" title="PipeFlow::Parser::AST::Parameterized::Parameter::TYPES (constant)">TYPES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='op'>|</span>
+  <span class='id identifier rubyid_type_pred'>type_pred</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
+  <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>has_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_content'>_param?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_parameters'>parameters</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_type_pred'>type_pred</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_key_param?-instance_method">
+  
+    #<strong>has_key_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are both a keyword parameter and optional</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 65</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_keyreq_param?-instance_method">
+  
+    #<strong>has_keyreq_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are both a keyword parameter and required</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 61</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_keyrest_param?-instance_method">
+  
+    #<strong>has_keyrest_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are a keyword rest parameter (e.g. <tt>**kwargs</tt>)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 73</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_keyword_param?-instance_method">
+  
+    #<strong>has_keyword_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>checks if any parameters are a keyword parameter</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_keyword_param?'>has_keyword_param?</span>
+  <span class='id identifier rubyid_parameters'>parameters</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:keyword?</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_opt_param?-instance_method">
+  
+    #<strong>has_opt_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are positional and optional</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 57</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_positional_param?-instance_method">
+  
+    #<strong>has_positional_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>checks if any parameters are a positional parameter</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_has_positional_param?'>has_positional_param?</span>
+  <span class='id identifier rubyid_parameters'>parameters</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='symbol'>:positional?</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_req_param?-instance_method">
+  
+    #<strong>has_req_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are positional and required</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 53</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="has_rest_param?-instance_method">
+  
+    #<strong>has_rest_param?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Checks if any parameters are a rest parameter (e.g. <tt>*args</tt>)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 69</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reifiable?-instance_method">
+  
+    #<strong>reifiable?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+
+<p>Reifiability determines representability and usability within the context
+of a pipeline. A parameterized node is reifiable if and only if it, with
+the metadata available, can reasonably be used as a <em>hole</em> or
+<em>destination</em> within a pipeline.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Distinction between Reifiable and Non-Reifiable for Method Calls</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='kw'>def</span> <span class='id identifier rubyid_method_call'>method_call</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
+  <span class='comment'># ...
+</span><span class='kw'>end</span>
+<span class='comment'># Partial method calls *can* be conceived to have holes:
+</span><span class='id identifier rubyid_method_call'>method_call</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>          <span class='comment'># =&gt; Possibly method_call(·, ·, z = 1) but is not reifiable
+</span>                        <span class='comment'>#    since it cannot fit in a single-value pipeline
+</span><span class='id identifier rubyid_method_call'>method_call</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='symbol'>:a</span><span class='rparen'>)</span>      <span class='comment'># =&gt; Possibly method_call(·, y = 1, z = :a) which is reifiable
+</span><span class='comment'># Complete method calls *cannot* be conceived to have holes:
+</span><span class='id identifier rubyid_method_call'>method_call</span><span class='lparen'>(</span><span class='int'>1</span><span class='comma'>,</span> <span class='symbol'>:a</span><span class='comma'>,</span> <span class='symbol'>:b</span><span class='rparen'>)</span>  <span class='comment'># =&gt; method_call(x = 1, y = :a, z = :b) and not reifiable</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="MethodCall.html" title="PipeFlow::Parser::AST::MethodCall (class)">example use in MethodCall</a></span></li>
+    
+      <li><span class='object_link'><a href="Block.html" title="PipeFlow::Parser::AST::Block (class)">example use in Block</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 107</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_definition-instance_method">
+  
+    #<strong>to_definition</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+
+<p>Attempts to derive a sane string representing a likely definition for the
+parameterized object.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="MethodCall.html" title="PipeFlow::Parser::AST::MethodCall (class)">example use in MethodCall</a></span></li>
+    
+      <li><span class='object_link'><a href="Block.html" title="PipeFlow::Parser::AST::Block (class)">example use in Block</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 141</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_representation-instance_method">
+  
+    #<strong>to_representation</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>Often this involves representing some parameter as a hole, hence the
+provision of <span class='object_link'>#parameter_list</span> and <span class='object_link'>#parameter_list_with_hole</span>.</p>
+</div>
+  </div>
+
+
+<p>Attempts to derive a sane string representing the conceptual meaning of the
+parameterized node in the pipeline.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="MethodCall.html" title="PipeFlow::Parser::AST::MethodCall (class)">example use in MethodCall</a></span></li>
+    
+      <li><span class='object_link'><a href="Block.html" title="PipeFlow::Parser::AST::Block (class)">example use in Block</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 129</span>
+
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    #<strong>to_s</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>A client may decide to override and not use this method and may then forego
+defining <span class='object_link'><a href="#reifiable%3F-instance_method" title="PipeFlow::Parser::AST::Parameterized#reifiable? (method)">#reifiable?</a></span>, <span class='object_link'><a href="#to_definition-instance_method" title="PipeFlow::Parser::AST::Parameterized#to_definition (method)">#to_definition</a></span>, and <span class='object_link'><a href="#to_representation-instance_method" title="PipeFlow::Parser::AST::Parameterized#to_representation (method)">#to_representation</a></span></p>
+</div>
+  </div>
+
+
+<p>Attempts to determine a valid representation of the node, based on
+reifiability.</p>
+
+<p>If the node is reifiable, it will attempt to send <span class='object_link'><a href="#to_representation-instance_method" title="PipeFlow::Parser::AST::Parameterized#to_representation (method)">#to_representation</a></span>,
+otherwise it will be considered not representable in the pipeline and a
+call to <span class='object_link'><a href="#to_definition-instance_method" title="PipeFlow::Parser::AST::Parameterized#to_definition (method)">#to_definition</a></span> will be made.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="MethodCall.html" title="PipeFlow::Parser::AST::MethodCall (class)">example use in MethodCall</a></span></li>
+    
+      <li><span class='object_link'><a href="Block.html" title="PipeFlow::Parser::AST::Block (class)">example use in Block</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+164
+165
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/ast/parameterized.rb', line 164</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_to_definition'>to_definition</span> <span class='kw'>unless</span> <span class='id identifier rubyid_reifiable?'>reifiable?</span>
+
+  <span class='id identifier rubyid_to_representation'>to_representation</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Dec  3 02:37:03 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.16 (ruby-2.2.10).
+</div>
+
+    </div>
+  </body>
+</html>
