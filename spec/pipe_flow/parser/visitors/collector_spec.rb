@@ -6,7 +6,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Collector do
     let(:collected) { instance.collected }
 
     context 'for a AST::Hole' do
-      let(:input) { PipeFlow::Parser::AST::Hole.instance }
+      let(:input) { PipeFlow::AST::Hole.instance }
       before { subject }
 
       it 'collects a single result' do
@@ -19,7 +19,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Collector do
     end
 
     context 'for a AST::Literal' do
-      let(:input) { PipeFlow::Parser::AST::Literal.new(double('Literal Value')) }
+      let(:input) { PipeFlow::AST::Literal.new(double('Literal Value')) }
       before { subject }
 
       it 'collects a single result' do
@@ -35,7 +35,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Collector do
       let(:fake_env) { object_double(binding) }
       let(:fake_self) { double('Receiver') }
 
-      let(:input) { PipeFlow::Parser::AST::MethodCall.new(fake_env, :test_method, []) }
+      let(:input) { PipeFlow::AST::MethodCall.new(fake_env, :test_method, []) }
 
       before do
         allow(fake_env).to receive(:eval).with(anything).and_return([], fake_self)
@@ -53,7 +53,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Collector do
 
     context 'for a AST::Block' do
       let(:block_value) { proc { |x| x } }
-      let(:input) { PipeFlow::Parser::AST::Block.new(block_value) }
+      let(:input) { PipeFlow::AST::Block.new(block_value) }
 
       before { subject }
 
@@ -67,9 +67,9 @@ RSpec.describe PipeFlow::Parser::Visitors::Collector do
     end
 
     context 'for a AST::Pipe' do
-      let(:input) { PipeFlow::Parser::AST::Pipe.new(source, destination) }
-      let(:source) { PipeFlow::Parser::AST::Hole.instance }
-      let(:destination) { PipeFlow::Parser::AST::Literal.new(double('Literal Value')) }
+      let(:input) { PipeFlow::AST::Pipe.new(source, destination) }
+      let(:source) { PipeFlow::AST::Hole.instance }
+      let(:destination) { PipeFlow::AST::Literal.new(double('Literal Value')) }
 
       it 'collects two results' do
         subject
