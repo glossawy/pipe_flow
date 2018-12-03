@@ -50,5 +50,25 @@ module PipeFlow
 
     UnreifiableNodeError = Class.new(StandardError)
     MisplacedPartialError = Class.new(StandardError)
+
+    #
+    # Raises an error if and only if any values in the array of values are partial method
+    # calls.
+    #
+    # @param [String,Symbol] referenced_name Name of containing scope
+    #                        (i.e. name of method/proc variable)
+    # @param [Array] values
+    #
+    # @return [values] if no partial method calls are found
+    # @raise [Errors::MisplacedPartialError] if any of +values+ is a partial method call
+    #
+    def reject_partials(referenced_name, values)
+      return values unless values.any? { |val| val.is_a? Parser::AST::MethodCall }
+
+      ::Kernel.raise Errors::MisplacedPartialError,
+                     'Found a partial method call as an argument to a proc or method' \
+                     "(specifically to `#{referenced_name}`), this is likely programmer error. " \
+                     'All non-pipeline methods should not be missing any arguments.'
+    end
   end
 end

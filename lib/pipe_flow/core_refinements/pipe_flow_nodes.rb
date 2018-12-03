@@ -1,6 +1,15 @@
 module PipeFlow
   module CoreRefinements
     module PipeFlowNodes
+      refine PipeFlow::Parser::ObjectProxy do
+        def to_pipe_flow_node
+          ::Kernel.raise Errors::UnreifiableNodeError,
+                         'Proxies cannot be used as pipeline objects. For example, ' \
+                         '`input(10) >> on(Math)` is invalid; however, ' \
+                         '`input(10) >> on(Math).sqrt` is not.'
+        end
+      end
+
       refine Object do
         def to_pipe_flow_node
           Parser::AST::Literal.new(self)
