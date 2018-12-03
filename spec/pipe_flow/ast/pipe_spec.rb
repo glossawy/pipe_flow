@@ -1,4 +1,4 @@
-RSpec.describe PipeFlow::Parser::AST::Pipe do
+RSpec.describe PipeFlow::AST::Pipe do
   it_behaves_like 'a PipeFlow AST Node'
 
   let(:instance) { described_class.new(source, destination) }

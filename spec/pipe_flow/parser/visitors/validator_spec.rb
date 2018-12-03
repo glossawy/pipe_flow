@@ -7,7 +7,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Validator do
   context '#visit' do
     subject { super().visit(input) }
     context 'visiting a pipe node' do
-      let(:input) { PipeFlow::Parser::AST::Pipe.new(source, destination) }
+      let(:input) { PipeFlow::AST::Pipe.new(source, destination) }
       let(:source) { double('Source Node', valid_source_node?: true) }
       let(:destination) { double('Destination Node', valid_destination_node?: true) }
 
@@ -32,7 +32,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Validator do
     end
 
     context 'visiting a block node' do
-      let(:input) { double(PipeFlow::Parser::AST::Block, class: PipeFlow::Parser::AST::Block) }
+      let(:input) { double(PipeFlow::AST::Block, class: PipeFlow::AST::Block) }
 
       it 'does not raise an error when the node is reifiable', aggregate_failures: true do
         expect(input).to receive(:reifiable?).and_return(true)
@@ -46,7 +46,7 @@ RSpec.describe PipeFlow::Parser::Visitors::Validator do
     end
 
     context 'visiting a block node' do
-      let(:input) { double(PipeFlow::Parser::AST::MethodCall, class: PipeFlow::Parser::AST::MethodCall) }
+      let(:input) { double(PipeFlow::AST::MethodCall, class: PipeFlow::AST::MethodCall) }
 
       it 'does not raise an error when the node is reifiable', aggregate_failures: true do
         expect(input).to receive(:reifiable?).and_return(true)
