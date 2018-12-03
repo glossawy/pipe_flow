@@ -2,13 +2,16 @@ sudo: false
 language: ruby
 rvm:
   - 2.2.10
+  - 2.3
+  - 2.4
+  - 2.5
 
 before_install:
   - gem install bundler -v 1.16.2
 install:
   - bundle install --jobs=3 --retry=3
-
 before_script:
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
@@ -17,8 +20,7 @@ script:
   - bundle exec rubocop -DESP
   - bundle exec rubycritic -f console -s 90 lib/
   - bundle exec fasterer lib || true
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+after_script: if ! $TRAVIS_PULL_REQUEST; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
 notifications:
   - false
@@ -26,3 +28,17 @@ notifications:
 branches:
   only:
     - master
+
+jobs:
+  include:
+    - stage: Deploy Docs
+      before_install: skip
+      install: skip
+      before_script: skip
+      script: bash ./deploy-docs.sh
+      after_script: skip
+
+stages:
+  - Test
+  - name: Deploy Docs
+    if: branch = master AND type != pull_request

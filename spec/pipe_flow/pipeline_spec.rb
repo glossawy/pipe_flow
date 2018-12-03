@@ -122,6 +122,47 @@ RSpec.describe PipeFlow::Pipeline do
         expect { subject }.to raise_error(PipeFlow::Errors::MisplacedPartialError)
       end
     end
+
+    context 'a pipeline using a proxied value' do
+      context 'correctly' do
+        subject do
+          described_class.from_block do
+            input(/\Atest_/) >> on('test_string').gsub('changed_')
+          end
+        end
+
+        it 'returns the expected ouput' do
+          is_expected.to eq('changed_string')
+        end
+      end
+
+      context 'correctly with a constant' do
+        subject do
+          described_class.from_block do
+            input(25) \
+              >> on(Math).sqrt \
+              >> on(Math).hypot(12) \
+              >> reflect(:test_symbol)
+          end
+        end
+
+        it 'returns the expected output' do
+          is_expected.to contain_exactly(13, :test_symbol)
+        end
+      end
+
+      context 'incorrectly by not calling a method on the proxy' do
+        subject do
+          described_class.from_block do
+            input(25) >> on(Math)
+          end
+        end
+
+        it 'raises an unreifiable node error' do
+          expect { subject }.to raise_error(PipeFlow::Errors::UnreifiableNodeError)
+        end
+      end
+    end
   end
 
   context 'as a refinement' do

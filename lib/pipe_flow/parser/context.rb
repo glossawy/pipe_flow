@@ -4,8 +4,11 @@ module PipeFlow
     # A minimal parsing context that any pipeline code is executed within, handling partial
     # method evaluation.
     #
-    class Context < BasicObject
+    class Context < Parser::BasicObject
       include Parser::VariableCapture
+      include Errors
+
+      SPECIAL_METHODS |= %i[input on].freeze
 
       # Environment to which pipeline evaluation should be considered
       # bound.
@@ -18,9 +21,11 @@ module PipeFlow
 
       alias parse! instance_eval
 
+      private
+
       def method_missing(method_id, *args, &block)
         # `input` is considered a special, parser context method
-        return super if method_id == :input
+        return super if SPECIAL_METHODS.include?(method_id)
 
         # This is done here because the AST is not expressive enough to capture all forms of
         # method calls, we let all complete calls or "too-partial" calls forward to the original
@@ -34,25 +39,26 @@ module PipeFlow
           # If we can't reify, just pass the call off to the original receiver and let the method
           # call happen, or raise a NoMethodError. Seems the best way to provide the proper error
           # context.
-          unless mc.reifiable?
-            return bound_env.receiver.instance_eval { send(method_id, *args, &block) }
-          end
+          return bound_env.receiver.public_send(method_id, *args, &block) unless mc.reifiable?
         end
       end
 
       def respond_to_missing?(method_id, include_private)
         # All method calls happen within the context of the bound_env, except
         # input. The parser context provides that method.
-        (method_id == :input && super) ||
+        SPECIAL_METHODS.include?(method_id) ||
           bound_env.receiver.send(:respond_to?, method_id, include_private)
       end
-
-      private
 
       def input(value = nil)
         return AST::Hole.instance if value.nil?
 
         AST::Literal.new(value)
+      end
+
+      def on(value)
+        reject_partials(::Kernel.__method__, [value])
+        ObjectProxy.new(value)
       end
 
       #
@@ -84,26 +90,6 @@ module PipeFlow
           reject_partials(captured_proc.name, args)
           original_proc.call(*args, &block)
         end
-      end
-
-      #
-      # Raises an error if and only if any values in the array of values are partial method
-      # calls.
-      #
-      # @param [String,Symbol] referenced_name Name of containing scope
-      #                        (i.e. name of method/proc variable)
-      # @param [Array] values
-      #
-      # @return [values] if no partial method calls are found
-      # @raise [Errors::MisplacedPartialError] if any of +values+ is a partial method call
-      #
-      def reject_partials(referenced_name, values)
-        return values unless values.any? { |val| val.is_a? AST::MethodCall }
-
-        ::Kernel.raise Errors::MisplacedPartialError,
-                       'Found a partial method call as an argument to a proc or method' \
-                       "(specifically to `#{referenced_name}`), this is likely programmer error. " \
-                       'All non-pipeline methods should not be missing any arguments.'
       end
     end
   end
