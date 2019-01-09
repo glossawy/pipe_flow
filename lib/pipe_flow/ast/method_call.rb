@@ -44,6 +44,7 @@ module PipeFlow
           method_id: method_id,
           parameters: parameters.map(&:to_h),
           derived_arity: arity,
+          arguments: arguments,
           arg_count: arguments.size,
           reifiable: reifiable?
         )

@@ -68,6 +68,13 @@ module PipeFlow
           %i[keyreq key keyrest].include?(type)
         end
 
+        def to_h
+          {
+            name: name,
+            type: type,
+          }
+        end
+
         #
         # Determine a representation for this parameter based on the
         # {TYPE_FORMATS format table}.
