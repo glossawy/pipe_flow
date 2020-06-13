@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PipeFlow
   module AST
     class MethodCall < AST::Base
@@ -63,8 +65,6 @@ module PipeFlow
         derive_definition_with(parameter_list_with_hole)
       end
 
-      # rubocop:disable Metrics/AbcSize
-
       # (see Base#==)
       def ==(other)
         self.class == other.class &&
@@ -73,7 +73,6 @@ module PipeFlow
           parameters == other.parameters &&
           arguments == other.arguments
       end
-      # rubocop:enable Metrics/AbcSize
 
       private
 

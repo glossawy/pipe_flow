@@ -15,5 +15,8 @@ Style/AsciiComments:
 Naming/PredicateName:
   Enabled: no
 
+Style/NumericPredicate:
+  Enabled: no
+
 Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
