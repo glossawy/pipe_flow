@@ -11,7 +11,7 @@ branch_is_new=true
   # Setup git in docs directory
   cd docs
   git init
-  git remote add origin https://${GH_TOKEN}@github.com/Matt529/pipe_flow.git > /dev/null 2>&1
+  git remote add origin https://${GH_TOKEN}@github.com/Glossawy/pipe_flow.git > /dev/null 2>&1
   git fetch >/dev/null
   if git checkout gh-pages 2>/dev/null; then
     branch_is_new=false
