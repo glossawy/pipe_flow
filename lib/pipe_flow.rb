@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pipe_flow/version'
 require 'pipe_flow/errors'
 

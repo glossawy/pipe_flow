@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pipe_flow/version'
@@ -22,14 +24,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'bundler', '~> 2.1'
   spec.add_development_dependency 'fasterer', '~> 0.4.1'
   spec.add_development_dependency 'pry', '~> 0.12.2'
   spec.add_development_dependency 'pry-byebug', '~> 3.6.0'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rubocop', '~> 0.60.0'
-  spec.add_development_dependency 'rubycritic', '~> 3.5.0'
-  spec.add_development_dependency 'simplecov', '~> 0.16.1'
+  spec.add_development_dependency 'rubocop', '~> 0.85'
+  spec.add_development_dependency 'rubycritic', '~> 4.5.0'
+  spec.add_development_dependency 'simplecov', '~> 0.17'
   spec.add_development_dependency 'simplecov-console', '~> 0.4.2'
 end
