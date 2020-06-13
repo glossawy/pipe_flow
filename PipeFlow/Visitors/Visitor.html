@@ -6,15 +6,15 @@
 <title>
   Class: PipeFlow::Visitors::Visitor
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "PipeFlow::Visitors::Visitor";
   relpath = '../../';
 </script>
@@ -249,12 +249,12 @@ meaningful semantics.</p>
       <pre class="lines">
 
 
-58
-59
-60</pre>
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/visitors/visitor.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/visitors/visitor.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_do_nothing'>do_nothing</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_object'>object</span>
@@ -393,16 +393,16 @@ will be attempted on that method.</p>
       <pre class="lines">
 
 
-41
-42
 43
 44
 45
 46
-47</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/visitors/visitor.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/visitors/visitor.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit'>visit</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_find_visitable_method_for'>find_visitable_method_for</span><span class='lparen'>(</span><span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_visit_method_id'>visit_method_id</span><span class='op'>|</span>
@@ -421,9 +421,9 @@ will be attempted on that method.</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Dec  3 03:54:35 2018 by
+  Generated on Sat Jun 13 05:19:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.2.10).
+  0.9.25 (ruby-2.4.10).
 </div>
 
     </div>

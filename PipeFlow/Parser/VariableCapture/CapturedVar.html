@@ -6,15 +6,15 @@
 <title>
   Class: PipeFlow::Parser::VariableCapture::CapturedVar
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "PipeFlow::Parser::VariableCapture::CapturedVar";
   relpath = '../../../';
 </script>
@@ -344,7 +344,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of CapturedVar</p>
+<p>Returns a new instance of CapturedVar.</p>
 
 
   </div>
@@ -358,15 +358,15 @@
       <pre class="lines">
 
 
-13
-14
 15
 16
 17
-18</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_env'>env</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_written'>written</span><span class='rparen'>)</span>
   <span class='ivar'>@env</span> <span class='op'>=</span> <span class='id identifier rubyid_env'>env</span>
@@ -398,7 +398,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute env</p>
+<p>Returns the value of attribute env.</p>
 
 
   </div>
@@ -412,12 +412,12 @@
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_env'>env</span>
   <span class='ivar'>@env</span>
@@ -441,7 +441,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute name</p>
+<p>Returns the value of attribute name.</p>
 
 
   </div>
@@ -455,12 +455,12 @@
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -484,7 +484,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute value</p>
+<p>Returns the value of attribute value.</p>
 
 
   </div>
@@ -498,12 +498,12 @@
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
   <span class='ivar'>@value</span>
@@ -545,12 +545,12 @@
       <pre class="lines">
 
 
-11
-12
-13</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_written'>written</span>
   <span class='ivar'>@written</span>
@@ -579,7 +579,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns is this variable a Proc?</p>
+<p>Returns is this variable a Proc?.</p>
 
 
   </div>
@@ -611,12 +611,12 @@
       <pre class="lines">
 
 
-25
-26
-27</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_proc?'>proc?</span>
   <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Proc</span>
@@ -654,13 +654,13 @@ effectively delegates to #Binding#local_variable_set and ensures
       <pre class="lines">
 
 
-36
-37
 38
-39</pre>
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/variable_capture/captured_var.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_write_to_env!'>write_to_env!</span>
   <span class='id identifier rubyid_env'>env</span><span class='period'>.</span><span class='id identifier rubyid_local_variable_set'>local_variable_set</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -676,9 +676,9 @@ effectively delegates to #Binding#local_variable_set and ensures
 </div>
 
       <div id="footer">
-  Generated on Mon Dec  3 03:54:35 2018 by
+  Generated on Sat Jun 13 05:19:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.2.10).
+  0.9.25 (ruby-2.4.10).
 </div>
 
     </div>

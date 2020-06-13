@@ -6,15 +6,15 @@
 <title>
   Class: PipeFlow::AST::Base
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "PipeFlow::AST::Base";
   relpath = '../../';
 </script>
@@ -457,12 +457,12 @@ the source side of a <span class='object_link'><a href="Pipe.html" title="PipeFl
       <pre class="lines">
 
 
-55
-56
-57</pre>
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_destination_only_node!'>destination_only_node!</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_valid_source_node'>valid_source_node</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -505,12 +505,12 @@ destination side of a <span class='object_link'><a href="Pipe.html" title="PipeF
       <pre class="lines">
 
 
-40
-41
-42</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_source_only_node!'>source_only_node!</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_valid_destination_node'>valid_destination_node</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -562,7 +562,7 @@ destination side of a <span class='object_link'><a href="Pipe.html" title="PipeF
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 16</span>
 
 </pre>
     </td>
@@ -612,7 +612,7 @@ destination side of a <span class='object_link'><a href="Pipe.html" title="PipeF
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 16</span>
 
 </pre>
     </td>
@@ -639,7 +639,7 @@ destination side of a <span class='object_link'><a href="Pipe.html" title="PipeF
   <div class="discussion">
     
 <p>Returns whether or not this node is <em>structurally equivalent</em> to
-<code>other_node</code></p>
+<code>other_node</code>.</p>
 
 
   </div>
@@ -675,7 +675,7 @@ destination side of a <span class='object_link'><a href="Pipe.html" title="PipeF
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 108</span>
 
 </pre>
     </td>
@@ -743,12 +743,12 @@ node as the source.</p>
       <pre class="lines">
 
 
-67
-68
-69</pre>
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='op'>&gt;&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="../AST.html" title="PipeFlow::AST (module)">AST</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Pipe.html" title="PipeFlow::AST::Pipe (class)">Pipe</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Pipe.html#initialize-instance_method" title="PipeFlow::AST::Pipe#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_to_pipe_flow_node'>to_pipe_flow_node</span><span class='rparen'>)</span>
@@ -801,12 +801,12 @@ needed and the pipeline is non-executable at creation.</p>
       <pre class="lines">
 
 
-79
-80
-81</pre>
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_input_needed?'>input_needed?</span>
   <span class='kw'>false</span>
@@ -856,12 +856,12 @@ minimum of the node type.</p>
       <pre class="lines">
 
 
-98
-99
-100</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
   <span class='lbrace'>{</span> <span class='label'>type:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='rbrace'>}</span>
@@ -910,12 +910,12 @@ minimum of the node type.</p>
       <pre class="lines">
 
 
-88
-89
-90</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span>
@@ -964,10 +964,10 @@ minimum of the node type.</p>
       <pre class="lines">
 
 
-27</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 29</span>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='label'>valid_source_node:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>valid_destination_node:</span> <span class='kw'>true</span></pre>
     </td>
@@ -1014,10 +1014,10 @@ minimum of the node type.</p>
       <pre class="lines">
 
 
-27</pre>
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/base.rb', line 29</span>
 
 <span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='label'>valid_source_node:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>valid_destination_node:</span> <span class='kw'>true</span></pre>
     </td>
@@ -1030,9 +1030,9 @@ minimum of the node type.</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Dec  3 03:54:34 2018 by
+  Generated on Sat Jun 13 05:19:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.2.10).
+  0.9.25 (ruby-2.4.10).
 </div>
 
     </div>

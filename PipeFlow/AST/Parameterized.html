@@ -6,15 +6,15 @@
 <title>
   Module: PipeFlow::AST::Parameterized
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "PipeFlow::AST::Parameterized";
   relpath = '../../';
 </script>
@@ -548,12 +548,12 @@ reifiability.</p>
       <pre class="lines">
 
 
-48
-49
-50</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_accepts_block?'>accepts_block?</span>
   <span class='id identifier rubyid_has_block_param?'>has_block_param?</span>
@@ -612,8 +612,6 @@ Float::INFINITY is used.</p>
       <pre class="lines">
 
 
-25
-26
 27
 28
 29
@@ -628,10 +626,12 @@ Float::INFINITY is used.</p>
 38
 39
 40
-41</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_arity'>arity</span>
   <span class='ivar'>@arity</span> <span class='op'>||=</span> <span class='kw'>begin</span>
@@ -694,15 +694,15 @@ Float::INFINITY is used.</p>
       <pre class="lines">
 
 
-81
-82
 83
 84
 85
-86</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 83</span>
 
 <span class='const'><span class='object_link'><a href="Parameterized/Parameter.html" title="PipeFlow::AST::Parameterized::Parameter (class)">Parameter</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Parameterized/Parameter.html#TYPES-constant" title="PipeFlow::AST::Parameterized::Parameter::TYPES (constant)">TYPES</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_type'>type</span><span class='op'>|</span>
   <span class='id identifier rubyid_type_pred'>type_pred</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_type'>type</span><span class='embexpr_end'>}</span><span class='tstring_content'>?</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span>
@@ -757,7 +757,7 @@ Float::INFINITY is used.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 66</span>
 
 </pre>
     </td>
@@ -807,7 +807,7 @@ Float::INFINITY is used.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 62</span>
 
 </pre>
     </td>
@@ -857,7 +857,7 @@ Float::INFINITY is used.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 74</span>
 
 </pre>
     </td>
@@ -904,12 +904,12 @@ Float::INFINITY is used.</p>
       <pre class="lines">
 
 
-93
-94
-95</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_keyword_param?'>has_keyword_param?</span>
   <span class='id identifier rubyid_parameters'>parameters</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:keyword?</span><span class='rparen'>)</span>
@@ -961,7 +961,7 @@ Float::INFINITY is used.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 58</span>
 
 </pre>
     </td>
@@ -1008,12 +1008,12 @@ Float::INFINITY is used.</p>
       <pre class="lines">
 
 
-102
-103
-104</pre>
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_has_positional_param?'>has_positional_param?</span>
   <span class='id identifier rubyid_parameters'>parameters</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='symbol'>:positional?</span><span class='rparen'>)</span>
@@ -1065,7 +1065,7 @@ Float::INFINITY is used.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 54</span>
 
 </pre>
     </td>
@@ -1115,7 +1115,7 @@ Float::INFINITY is used.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 70</span>
 
 </pre>
     </td>
@@ -1201,7 +1201,7 @@ the metadata available, can reasonably be used as a <em>hole</em> or
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 108</span>
 
 </pre>
     </td>
@@ -1265,7 +1265,7 @@ parameterized object.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 142</span>
 
 </pre>
     </td>
@@ -1338,7 +1338,7 @@ parameterized node in the pipeline.</p>
 </pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 130</span>
 
 </pre>
     </td>
@@ -1408,14 +1408,14 @@ call to <span class='object_link'><a href="#to_definition-instance_method" title
       <pre class="lines">
 
 
-163
-164
 165
 166
-167</pre>
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 163</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/ast/parameterized.rb', line 165</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_to_definition'>to_definition</span> <span class='kw'>unless</span> <span class='id identifier rubyid_reifiable?'>reifiable?</span>
@@ -1432,9 +1432,9 @@ call to <span class='object_link'><a href="#to_definition-instance_method" title
 </div>
 
       <div id="footer">
-  Generated on Mon Dec  3 03:54:34 2018 by
+  Generated on Sat Jun 13 05:19:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.2.10).
+  0.9.25 (ruby-2.4.10).
 </div>
 
     </div>

@@ -6,15 +6,15 @@
 <title>
   Class: PipeFlow::Parser::ObjectProxy
   
-    &mdash; Documentation by YARD 0.9.16
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "PipeFlow::Parser::ObjectProxy";
   relpath = '../../';
 </script>
@@ -252,7 +252,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of ObjectProxy</p>
+<p>Returns a new instance of ObjectProxy.</p>
 
 
   </div>
@@ -266,13 +266,13 @@
       <pre class="lines">
 
 
-8
-9
 10
-11</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_receiver'>receiver</span><span class='rparen'>)</span>
   <span class='ivar'>@bound_env</span> <span class='op'>=</span> <span class='id identifier rubyid_receiver'>receiver</span><span class='period'>.</span><span class='id identifier rubyid_instance_eval'>instance_eval</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_binding'>binding</span> <span class='rbrace'>}</span>
@@ -306,18 +306,18 @@
       <pre class="lines">
 
 
-15
-16
 17
 18
 19
 20
 21
 22
-23</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_method_id'>method_id</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>super</span> <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="BasicObject.html#SPECIAL_METHODS-constant" title="PipeFlow::Parser::BasicObject::SPECIAL_METHODS (constant)">SPECIAL_METHODS</a></span></span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_method_id'>method_id</span><span class='rparen'>)</span>
@@ -352,7 +352,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute bound_env</p>
+<p>Returns the value of attribute bound_env.</p>
 
 
   </div>
@@ -366,12 +366,12 @@
       <pre class="lines">
 
 
-6
-7
-8</pre>
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bound_env'>bound_env</span>
   <span class='ivar'>@bound_env</span>
@@ -395,7 +395,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute receiver</p>
+<p>Returns the value of attribute receiver.</p>
 
 
   </div>
@@ -409,12 +409,12 @@
       <pre class="lines">
 
 
-6
-7
-8</pre>
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/pipe_flow/parser/object_proxy.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_receiver'>receiver</span>
   <span class='ivar'>@receiver</span>
@@ -430,9 +430,9 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Dec  3 03:54:35 2018 by
+  Generated on Sat Jun 13 05:19:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.16 (ruby-2.2.10).
+  0.9.25 (ruby-2.4.10).
 </div>
 
     </div>
