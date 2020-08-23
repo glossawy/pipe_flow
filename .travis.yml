@@ -22,6 +22,9 @@ script:
   - bundle exec rubycritic -f console -s 90 lib/
   # Fasterer just runs to inform about any potential perf problems, will not hold up CI
   - bundle exec fasterer lib || true
+after_script:
+  - echo "$TRAVIS_EVENT_TYPE on $BRANCH"
+  - if [[ "$BRANCH" == "master" ]] && [[ "$TRAVIS_EVENT_TYPE" != "pull_request" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
 notifications: {}
 
@@ -31,12 +34,15 @@ branches:
 
 jobs:
   include:
-    - stage: Deploy Docs and Code Climate
-      script:
-        - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-        - bash ./deploy-docs.sh
+    - stage: Deploy Docs
+      before_install: skip
+      install: skip
+      before_script: skip
+      script: bash ./deploy-docs.sh
+      after_script: skip
+
 
 stages:
   - Test
-  - name: Deploy Docs and Code Climate
+  - name: Deploy Docs
     if: branch = master AND type != pull_request
