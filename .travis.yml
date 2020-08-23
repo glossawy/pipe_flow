@@ -5,6 +5,8 @@ rvm:
   - 2.5
   - 2.6
 
+cache: bundler
+
 before_install:
   - gem install bundler -v 2.1.4
 install:
@@ -18,11 +20,10 @@ script:
   - bundle exec rspec --warnings --order random
   - bundle exec rubocop -DESP
   - bundle exec rubycritic -f console -s 90 lib/
+  # Fasterer just runs to inform about any potential perf problems, will not hold up CI
   - bundle exec fasterer lib || true
-after_script: if ! $TRAVIS_PULL_REQUEST; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
-notifications:
-  - false
+notifications: {}
 
 branches:
   only:
@@ -30,14 +31,12 @@ branches:
 
 jobs:
   include:
-    - stage: Deploy Docs
-      before_install: skip
-      install: skip
-      before_script: skip
-      script: bash ./deploy-docs.sh
-      after_script: skip
+    - stage: Deploy Docs and Code Climate
+      script:
+        - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+        - bash ./deploy-docs.sh
 
 stages:
   - Test
-  - name: Deploy Docs
+  - name: Deploy Docs and Code Climate
     if: branch = master AND type != pull_request
