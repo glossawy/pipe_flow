@@ -1,10 +1,16 @@
 AllCops:
+  NewCops: enable
   Exclude:
     - spec/**/*.rb
     - bin/**/*
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
+
+Lint/MissingSuper:
+  Enabled: no
+  Exclude:
+    - lib/pipe_flow/ast/**/*.rb
 
 Style/Documentation:
   Enabled: no

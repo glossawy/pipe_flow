@@ -35,26 +35,26 @@ module PipeFlow
         #   proc
         #
         def decorate(&decorator)
-          decorated_value = dispatch_by_type(__method__, &decorator)
+          decorated_value = dispatch_by_type(__method__, decorator)
           CapturedProc.new(env, name, decorated_value, false)
         end
 
         private
 
-        def decorate_lambda(&decorator)
+        def decorate_lambda(decorator)
           current_value = value
           ->(*args, &block) { decorator.call(current_value, *args, &block) }
         end
 
-        def decorate_proc(&decorator)
+        def decorate_proc(decorator)
           current_value = value
           proc { |*args, &block| decorator.call(current_value, *args, &block) }
         end
 
         def dispatch_by_type(id_prefix, *args, &block)
-          return __send__("#{id_prefix}_lambda", *args, &block) if lambda?
+          return send("#{id_prefix}_lambda", *args, &block) if lambda?
 
-          __send__("#{id_prefix}_proc", *args, &block)
+          send("#{id_prefix}_proc", *args, &block)
         end
       end
     end

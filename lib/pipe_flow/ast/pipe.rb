@@ -7,6 +7,7 @@ module PipeFlow
     #
     class Pipe < AST::Base
       attr_reader :source, :destination
+
       def initialize(source, destination)
         @source = source
         @destination = destination
