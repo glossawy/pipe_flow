@@ -33,6 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 0.85'
   spec.add_development_dependency 'rubycritic', '~> 4.5.0'
-  spec.add_development_dependency 'simplecov', '~> 0.18.0'
+  spec.add_development_dependency 'simplecov', '~> 0.17.0'
   spec.add_development_dependency 'simplecov-console', '~> 0.4.2'
 end
