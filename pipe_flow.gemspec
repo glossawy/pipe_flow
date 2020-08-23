@@ -7,6 +7,7 @@ require 'pipe_flow/version'
 Gem::Specification.new do |spec|
   spec.name          = 'pipe_flow'
   spec.version       = PipeFlow::VERSION
+  spec.required_ruby_version = '>= 2.4.0'
   spec.authors       = ['Matthew Crocco']
   spec.email         = ['matthewcrocco@gmail.com']
 
