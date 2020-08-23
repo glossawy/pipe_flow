@@ -11,13 +11,13 @@ pdebug() {
   echo "$pipein"
 }
 
-git config --global user.email "travis@travis-ci.org"
-git config --global user.name "Travis CI"
+git config user.email "travis@travis-ci.org"
+git config user.name "Travis CI"
 
 mkdir -p ./docs/  # In case docs/ is ever deleted for some reason
 
 branch_is_new=true
-gh_repo_location=$(git config --get remote.origin.url | cut -d ":" -f2 | pdebug "GH Repo Location: ")
+gh_repo_location=$(git config --get remote.origin.url | pdebug "GH Repo URL: " | cut -d "/" -f4,5 | pdebug "GH Repo Location: ")
 
 (
   # Setup git in docs directory
